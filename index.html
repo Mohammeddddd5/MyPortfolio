@@ -126,9 +126,7 @@ animate();
       <p class="section-text large-text">
         I am a data scientist specialized in transforming raw & complex data into actionable insights.
         Using advanced data analytics, machine learning and problem solving, I help businesses find
-        opportunities and achieve measurable results.
-      </p>
-      <p class="section-text extra-note" data-aos="fade-up" data-aos-delay="400">
+        opportunities and achieve measurable results.<br>
         I’m currently a student at DEPI Data Scientist track.
       </p>
     </div>
@@ -167,6 +165,7 @@ animate();
           <h3>Technical Skills</h3>
           <ul>
             <li>Data Cleaning & Preprocessing</li>
+            <li>Creating Dynamic Reports & Dashboards</li>
             <li>Data Analysis</li>
             <li>Gathering data & Creating pipelines</li>
             <li>Web Scraping</li>
@@ -242,34 +241,36 @@ animate();
 <section id="certificates" class="section">
   <div class="container">
     <h2 class="section-heading" data-aos="fade-up">Certificates</h2>
-    <div class="certificates-slider" data-aos="fade-up" data-aos-delay="200">
-      <button class="slider-btn prev">&lt;</button>
-      <div class="certificates-container">
-        <div class="certificate" onclick="showCertificateSlideshow('dataAnalyst', 0)">
-            <img src="./Certificates/Data Analyst in Python.png" alt="Data Analyst in Python Certificate" class="certificate-thumb">
-            <h3 class="certificate-title">Data Analyst in Python<br><small>DataCamp - 2025</small></h3>
-        </div>
-        <div class="certificate" onclick="showCertificateSlideshow('sqlAnalyst', 0)">
-            <img src="./Certificates/Associate Data Analyst in SQL.png" alt="Associate Data Analyst in SQL Certificate" class="certificate-thumb">
-            <h3 class="certificate-title">Associate Data Analyst in SQL<br><small>DataCamp - 2025</small></h3>
-        </div>
-        <div class="certificate" onclick="showCertificateSlideshow('WebScraping', 0)">
-            <img src="./Certificates/Web Scraping in Python.png" alt="Web Scraping in Python Certificate" class="certificate-thumb">
-            <h3 class="certificate-title">Web Scraping in Python<br><small>Udemy - 2025</small></h3>
-        </div>
-        <div class="certificate" onclick="showCertificateSlideshow('PowerBI', 0)">
-            <img src="./Certificates/PowerBI Fundamentals.png" alt="PowerBI Fundamentals Certificate" class="certificate-thumb">
-            <h3 class="certificate-title">PowerBI Fundamentals<br><small>DataCamp - 2025</small></h3>
-        </div>
-        <div class="certificate" onclick="showCertificateSlideshow('Excel', 0)">
-            <img src="./Certificates/Excel.png" alt="Excel Certificate" class="certificate-thumb">
-            <h3 class="certificate-title">Excel Certificate<br><small>Udemy - 2025</small></h3>
-        </div>
+    <div class="certificates-grid" data-aos="fade-up" data-aos-delay="200">
+      
+      <div class="certificate-card" onclick="showCertificateSlideshow('dataAnalyst', 0)">
+        <img src="./Certificates/Data Analyst in Python.png" alt="Data Analyst in Python Certificate" class="certificate-thumb">
+        <h3 class="certificate-title">Data Analyst in Python<br><small>DataCamp - 2025</small></h3>
       </div>
-      <button class="slider-btn next">&gt;</button>
+
+      <div class="certificate-card" onclick="showCertificateSlideshow('sqlAnalyst', 0)">
+        <img src="./Certificates/Associate Data Analyst in SQL.png" alt="Associate Data Analyst in SQL Certificate" class="certificate-thumb">
+        <h3 class="certificate-title">Associate Data Analyst in SQL<br><small>DataCamp - 2025</small></h3>
+      </div>
+
+      <div class="certificate-card" onclick="showCertificateSlideshow('WebScraping', 0)">
+        <img src="./Certificates/Web Scraping in Python.png" alt="Web Scraping in Python Certificate" class="certificate-thumb">
+        <h3 class="certificate-title">Web Scraping in Python<br><small>Udemy - 2025</small></h3>
+      </div>
+
+      <div class="certificate-card" onclick="showCertificateSlideshow('PowerBI', 0)">
+        <img src="./Certificates/PowerBI Fundamentals.png" alt="PowerBI Fundamentals Certificate" class="certificate-thumb">
+        <h3 class="certificate-title">PowerBI Fundamentals<br><small>DataCamp - 2025</small></h3>
+      </div>
+
+      <div class="certificate-card" onclick="showCertificateSlideshow('Excel', 0)">
+        <img src="./Certificates/Excel.png" alt="Excel Certificate" class="certificate-thumb">
+        <h3 class="certificate-title">Excel Certificate<br><small>Udemy - 2025</small></h3>
+      </div>
     </div>
   </div>
 </section>
+
 
 
 <div id="certModal" class="modal">
