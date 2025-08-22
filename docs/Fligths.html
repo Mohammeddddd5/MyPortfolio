@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flights Analysis</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="Projects.css">
+</head>
+<body>
+    <!-- Header -->
+    <canvas id="network-bg"></canvas>
+    <script src="Projects.js"></script>
+    <header>
+        <div class="nav-container">
+        <h1 class="logo">Mohammed Yasser</h1>
+        <nav class="nav-links">
+            <a href="Portfolio.html">Back to Portfolio</a>
+        </nav>
+        </div>
+    </header>
+
+    <!-- Project Header -->
+    <section class="project-header">
+        <h1 class="project-title">Flights Cancellation & Delay Analysis</h1>
+
+        <p class="project-overview">
+            <b>Project Overview: </b>Ever wondered why flights get delayed or cancelled?
+            In this project, I set out to answer exactly that question by diving deep into one of the largest flight datasets available.
+            Using data from 5.8 million flights across the U.S. in 2015; a year that captured the majority of scheduled flights. I conducted a comprehensive analysis to uncover:
+        </p>
+
+        <ul class="project-overview-list">
+            <li>Key causes of delays and cancellations</li>
+            <li>Patterns across airlines, airports, and time periods</li>
+            <li>Seasonal and operational trends that affect flight performance</li>
+        </ul>
+
+        <p class="project-overview">
+            The goal of this analysis is not only to understand when and where disruptions happen,
+            but also to identify why they occur and what factors play the biggest role.
+            By transforming raw flight data into meaningful insights, this project sheds light on air travel reliability
+            and helps build a foundation for smarter scheduling, airline performance benchmarking, and potential
+            predictive modeling for future disruptions.
+        </p>
+        <p class="project-overview">
+            <b>Tools Used for Project: </b> Python for data collection, data cleaning & preprocessing, PowerBI for creating a dynamic dashboard
+        </p>
+    </section>
+
+    <!-- Content Sections -->
+    <section class="content-section">
+        <div class="content-text">
+            <h2>Cancellation Analysis</h2>
+            <p>
+                The first part of our analysis, it aims to find the key reasons for cancellations, which airlines have the highest delay rate and more!
+                <br>here are the key insights uncovered:
+            </p>
+            <ul class="project-overview-list">
+                <li>
+                    90K flights in the U.S have been cancelled, that is 1.54% of the flights
+                </li>
+                <li>
+                    American Eagle Airline had a very high cancellation rate of 5%, that is the double of the second highest cancellation rate!
+                </li>
+                <li>
+                    Cancellation rate increases in winter
+                </li>
+                <li>
+                    North Eastern states had a high cancellation rate
+                </li>
+                <li>
+                    About 54% of flights have been cancelled due to weather
+                </li>
+            </ul>
+        </div>
+        <div class="content-image">
+            <img src="Projects/Flights Delay/1- Cancellation Analysis.png" alt="Project visual">
+        </div>
+    </section>
+
+    <section class="content-section">
+        <div class="content-text">
+            <h2>Departure Delays Analysis</h2>
+            <p>
+                Aims to find out Departure delay rate overall and by other metrics<br>
+                Key insights:
+            </p>
+            <ul class="project-overview-list">
+                <li>
+                    9.37 minutes is the average departure delay
+                </li>
+                <li>
+                    82.41% of flights have been delayed, where a delayed flight is a flight that departed 10+ minutes late
+                </li>
+                <li>
+                    Hawaiian Airlines & Alaska Airlines had the highest delay late, because they're is the farthest states
+                </li>
+                <li>
+                    Departure delay rate is unstable through the year, but it is at is lowest in fall
+                </li>
+                <li>
+                    Departure delay is high for flights that starts between 10PM ~ 4AM
+                </li>
+            </ul>
+        </div>
+        <div class="content-image">
+            <img src="Projects/Flights Delay/2- Departure Delays.png" alt="Project visual">
+        </div>
+    </section>
+
+    <section class="content-section">
+        <div class="content-text">
+            <h2>Arrival Delays Analysis</h2>
+            <p>
+                3rd part of our project, aims to find key insights for arrival delays, which are:
+            </p>
+            <ul class="project-overview-list">
+                <li>
+                    Average arrival delay is 4.3 minutes
+                </li>
+                <li>
+                    27.38% of flights have arrival delay, a flight is considered with arrival delay if arrival delay is 5+ minutes
+                </li>
+                <li>
+                    Hawaiian Airlines & Alaska Airlines had the highest delay late, because they're is the farthest states
+                </li>
+                <li>
+                    Departure delay rate is unstable through the year, but it is at is lowest in fall
+                </li>
+                <li>
+                    Spirit Airlines & Frontier Airlines had the highest arrival delay rate, they are also the lowest-cost airlines which shows a correlation
+                </li>
+            </ul>
+        </div>
+        <div class="content-image">
+            <img src="Projects/Flights Delay/3- Arrival Delays.png" alt="Project visual">
+        </div>
+    </section>
+
+    <section class="content-section">
+        <div class="content-text">
+            <h2>Delays by Other Metrics</h2>
+            <p>
+                This is the final stage of the analysis, we explore delays by other metrics such as overall delay rate (departure, arrival and other types) by time, distance, taxi out time:
+            </p>
+            <ul class="project-overview-list">
+                <li>
+                    Texas, california & Florida had the highest overall delay rate, possibly because they are the most populated states
+                </li>
+                <li>
+                    Flight distance & Delay rate have a weak positive correlation, meaning that short flights are most likely to have arrival delays
+                </li>
+                <li>
+                    Taxi out time & Delay rate have a weak negative correlation, meaning that flights with longer taxi out time are least likely to have arrival delays
+                </li>
+                <li>
+                    Overall delay rate is at its lowest between 1AM~4AM, and at its highest between 5AM~8AM
+                </li>
+            </ul>
+        </div>
+        <div class="content-image">
+            <img src="Projects/Flights Delay/4- Delays by Other Metrics.png" alt="Project visual">
+        </div>
+    </section>
+
+    <section class="content-section">
+        <div class="content-text">
+            <h2>Flight Routes</h2>
+            <p>
+                An extra page to spectate flight routes from states to others, or cities to others, this page is not part of the analysis but it is a good way to visualize the data.
+            </p>
+        </div>
+        <div class="content-image">
+            <img src="Projects/Flights Delay/5- Flight Routes.png" alt="Project visual">
+        </div>
+    </section>
+
+    <section class="content-section", style="margin-bottom: 80px;">
+        <div class="content-text">
+            <h2>What should we do?</h2>
+            <p>
+                For passengers, it is important to know when and where delays are most likely to happen, so they can plan their trips accordingly.
+                so the next time you book a flight, consider the following:
+                <ul class="project-overview-list">
+                    <li>Choose an appropriate airline: some airlines have high cancellation rates and some other have high delay rates, 
+                        by now you should know them.
+                        If your travel is urgent and no delays should occur then consider avoiding these airlines</li>
+                    <li>Track weather: check for the weather state during ur flight before the flight starts, specially in winter</li>
+                    <li>Travel late: delay rates are low between 10PM ~ 4AM, consider traveling by that time</li>
+                    <li>Get ready for delays: If you will travel from a highly populated state, put in considerations that your flight might be delayed a little</li>
+            </p>
+        </div>
+    </section>
+</body>
+</html>

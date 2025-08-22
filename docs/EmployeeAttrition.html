@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Attrition Analysis</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="Projects.css">
+</head>
+<body>
+    <!-- Header -->
+     <canvas id="network-bg"></canvas>
+    <script src="Projects.js"></script>
+   <header>
+        <div class="nav-container">
+        <h1 class="logo">Mohammed Yasser</h1>
+        <nav class="nav-links">
+            <a href="Portfolio.html">Back to Portfolio</a>
+        </nav>
+        </div>
+    </header>
+
+    <!-- Project Header -->
+    <section class="project-header">
+        <h1 class="project-title">Employee Attrition Analysis</h1>
+        <p class="project-overview">
+            <b>Overview: </b>This project focuses on understanding employee attrition, why do employees leave their companies? is it because of the work environment,
+            salary, or other factors? The goal is to analyze the data and provide insights that can help organizations improve retention strategies. <br><br>
+            In this project, I have used a dataset of employees from a company with over 1400 employees, analyzing various factors such as job satisfaction, 
+            salary, and work-life balance to answer:
+        </p>
+        <ul class="project-overview-list">
+            <li>What is the attrition rate for the company?</li>
+            <li>What are the main factors contributing to attrition?</li>
+            <li>Do employees that leave have any common factors between them?</li>
+            <li>Do demographics of employees impact the attrition rate?</li>
+        </ul>
+        <p class="project-overview">
+            And more questions that can be answered by analyzing the data. The analysis includes visualizations and statistical methods to draw conclusions
+            and provide actionable insights for the company to improve employee retention.<br><br>
+            <b>Tools used:</b> PowerBI only have been used, as the dataset was clean and prepared for analysis
+        </p>
+        
+    </section>
+
+    <!-- Content Sections -->
+    <section class="content-section">
+        <div class="content-text">
+            <h2>Attrition & Satisfaction Rates</h2>
+            <p>
+                First stage of the analysis, it aims to understand the attrition, satsisfaction & environment satisfaction rates for the employees 
+                in the company, and how do these 3 correlate to each. the insights uncovered were:
+            </p>
+            <ul class="project-overview-list">
+                <li>Attrition rate is 16.1% which is a bit high, as the attrition rate for most companies is around 13%</li>
+                <li>Both satisfaction rate and enviroment satisfaction rate are around 68%, this is higher than average</li>
+                <li>Attrition rate has a negative correlation with environment satisfaction rate & satisfaction rate for company</li>
+            </ul>
+        </div>
+        <div class="content-image">
+            <img src="Projects/Employee Attrition/1- Attraction & Satisfaction Rates.png" alt="Project visual">
+        </div>
+    </section>
+
+
+    <section class="content-section">
+        <div class="content-text">
+            <h2>Demographics</h2>
+            <p>
+                Second stage of the analysis, it aims to understand the demographics of the employees in the company,
+                and how do these demographics impact the attrition rate.
+                The insights uncovered:
+            </p>
+            <ul class="project-overview-list">
+                <li>Attrition rate for female employees is 22% and 17% for males, this means female employees are more likely to leave</li>
+                <li>Attrition rate is extremely high for employees aged 18-22, very high for 22-30, at its lowest for employees aged 30-50, moderately high for employees above 50</li>
+                <li>Employees with HR Education field are most likely to leave</li>
+                <li>Employees that are unsatisfied in their relationships or single are likely to leave</li>
+            </ul>
+        </div>
+        <div class="content-image">
+            <img src="Projects/Employee Attrition/2- Demographics.png" alt="Project visual">
+        </div>
+    </section>
+
+
+    <section class="content-section">
+        <div class="content-text">
+            <h2>Travel & Organization</h2>
+            <p>
+                Third stage, it uncovers the impact of travel and organization on attrition rates.
+                Key insights:
+            </p>
+            <ul class="project-overview-list">
+                <li>Almost 40% of sales representatives have left the company which is quiet alot. Comming after them laboratory technichans and HRs with both roles having almost 24% Attrition rate</li>
+                <li>Sales department has the highest attrition rate, by 38.5%</li>
+                <li>Over 50% of employees lost were frequent travellers</li>
+            </ul>
+        </div>
+        <div class="content-image">
+            <img src="Projects/Employee Attrition/3- Travel & Organization.png" alt="Project visual">
+        </div>
+    </section>
+
+
+    <section class="content-section">
+        <div class="content-text">
+            <h2>Time spent in company</h2>
+            <p>
+                Stage 4, it focuses on the time employees spend in the company and its correlation with attrition rates.
+                Key insights:
+            </p>
+            <ul class="project-overview-list">
+                <li>Employees who either joined the company recently [within 1-3 years] and employees who stayed for too long [22+ years] are most likely to leave</li>
+                <li>Employees who stayed too long in their roles or with their managers are most likely to leave</li>
+            </ul>
+        </div>
+        <div class="content-image">
+            <img src="Projects/Employee Attrition/4- Time Spent in Company.png" alt="Project visual">
+        </div>
+    </section>
+
+
+    <section class="content-section">
+        <div class="content-text">
+            <h2>Compensation Rates</h2>
+            <p>
+                One of the most important, if not the most imporant factors in employee retention is compensation.
+                This stage of the analysis focuses on understanding how compensation rates impact attrition:
+            </p>
+            <ul class="project-overview-list">
+                <li>Average salary for employees in company is 6500$ which is higher than average in USA [6000$]</li>
+                <li>Attrition rate decreases as salary increases with a slightly weak positive correlation</li>
+                <li>Attrition rate decreases slightly as percent salary hike increases</li>
+                <li>Employees with high daily rates are less likely to leave the company</li>
+            </ul>
+        </div>
+        <div class="content-image">
+            <img src="Projects/Employee Attrition/5- Compensation & Rates.png" alt="Project visual">
+        </div>
+    </section>
+
+
+    <section class="content-section">
+        <div class="content-text">
+            <h2>Other metrics</h2>
+            <p>
+                Final stage of the analysis, it focuses on other metrics that impact attrition rates.
+                Key insights:
+            </p>
+            <ul class="project-overview-list">
+                <li>Employees who have worked in multipe companies before [5-9] are most likely to leave, while employees who worked with 0-4 companies are less likely to leave</li>
+                <li>Employees who were given 2 or 3 trainings were most likely to leave too</li>
+                <li>Most employees who left were living near the company</li>
+            </ul>
+        </div>
+        <div class="content-image">
+            <img src="Projects/Employee Attrition/6- Other Metrics.png" alt="Project visual">
+        </div>
+    </section>
+
+
+    <section class="content-section">
+        <div class="content-text">
+            <h2>Data Set</h2>
+            <p>
+                This is an extra page with the dataset used in the analysis, it contains various attributes of employees in a company and a search bar to search for specific employees.
+            </p>
+        </div>
+        <div class="content-image">
+            <img src="Projects/Employee Attrition/7- Data Set.png" alt="Project visual">
+        </div>
+    </section>
+
+
+    <section class="content-section", style="margin-bottom: 80px;">
+        <div class="content-text">
+            <h2>What should we do to decrease the attrition rate?</h2>
+            <p>
+                Based on the analysis, here are some recommendations to decrease the attrition rate:
+                <ul class="project-overview-list">
+                    <li>Improve work-life balance and job satisfaction by providing better work environment and support</li>
+                    <li>Increase salary and compensation rates to match industry standards</li>
+                    <li>Focus on employee development and training to improve skills and job satisfaction</li>
+                    <li>Implement flexible work arrangements to accommodate employees' needs</li>
+            </p>
+        </div>
+    </section>
+    <!-- Add more content sections as needed -->
+</body>
+</html>
