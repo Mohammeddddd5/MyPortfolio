@@ -222,28 +222,27 @@ body {
 }
 
 .certificates-container {
-    display: flex;
-    gap: 2rem;
-    overflow-x: auto;
-    scroll-behavior: smooth;
-    padding: 2rem 0;
-    -ms-overflow-style: none;
-    scrollbar-width: none;
+  display: flex;
+  flex-wrap: wrap;          /* allow multiple rows */
+  justify-content: center;  /* center each row */
+  gap: 2rem;
+  padding: 2rem 0;
 }
+
 
 .certificates-container::-webkit-scrollbar {
     display: none;
 }
 
 .certificate {
-    flex: 0 0 auto;
-    width: 300px;
-    border-radius: 1rem;
-    overflow: hidden;
-    box-shadow: 0 0 20px var(--shadow);
-    transition: transform 0.3s ease;
-    background: var(--bg-secondary);
+  flex: 0 1 300px; /* flexible but max 300px */
+  border-radius: 1rem;
+  overflow: hidden;
+  box-shadow: 0 0 20px var(--shadow);
+  transition: transform 0.3s ease;
+  background: var(--bg-secondary);
 }
+
 
 .certificate-thumb {
     width: 100%;
@@ -1298,4 +1297,96 @@ canvas#network-bg {
     align-items: center;  /* center horizontally */
     gap: 1rem;
   }
+}
+
+
+/* Skill bars */
+.skill {
+  margin-bottom: 1rem;
+}
+
+.skill span {
+  display: block;
+  font-size: 0.9rem;
+  margin-bottom: 0.3rem;
+  color: var(--text-secondary);
+}
+
+.skill-bar {
+  width: 100%;
+  height: 10px;
+  background: #ddd;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.skill-bar div {
+  height: 100%;
+  background: var(--accent);
+  border-radius: 5px;
+}
+
+/* Responsive: 3 top, 2 bottom *
+
+/* Skills Layout */
+.skills-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;   /* center rows */
+  gap: 2rem;
+}
+
+.skills-box {
+  background: var(--bg-secondary);
+  border-radius: 1rem;
+  padding: 2rem;
+  box-shadow: 0 0 20px var(--shadow);
+  transition: transform 0.3s ease;
+  width: 100%;
+  max-width: 350px;
+}
+
+.skills-box:hover {
+  transform: translateY(-5px);
+}
+
+.skills-box h3 {
+  font-size: 1.5rem;
+  color: var(--accent);
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+/* Responsive */
+@media (max-width: 991px) {
+  .skills-box {
+    flex: 1 1 calc(50% - 2rem); /* 2 per row */
+  }
+}
+
+@media (max-width: 768px) {
+  .skills-box {
+    flex: 1 1 100%; /* stack */
+  }
+}
+
+
+/* Certificates as grid like projects */
+.certificates-container {
+  display: grid !important;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)) !important;
+  gap: 2rem !important;
+  justify-items: center !important; /* center each certificate */
+  width: 100% !important;
+  padding: 2rem 0 !important;
+}
+
+.certificate {
+  width: 100% !important;
+  max-width: 300px !important;
+  border-radius: 1rem;
+  overflow: hidden;
+  box-shadow: 0 0 20px var(--shadow);
+  transition: transform 0.3s ease;
+  background: var(--bg-secondary);
 }
