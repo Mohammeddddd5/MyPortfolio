@@ -1390,3 +1390,151 @@ canvas#network-bg {
   transition: transform 0.3s ease;
   background: var(--bg-secondary);
 }
+
+
+/* Education Section */
+.education-section {
+  padding: 60px 20px;
+  background: var(--bg-secondary);
+  text-align: center;
+}
+
+.timeline {
+  position: relative;
+  margin: 50px auto;
+  width: 80%;
+}
+
+.timeline::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  border-left: 3px dotted var(--accent);
+  transform: translateX(-50%);
+}
+
+
+
+.education-section {
+  padding: 80px 20px;
+  background: none;   /* no background */
+  text-align: center;
+}
+
+.timeline {
+  position: relative;
+  margin: 50px auto;
+  width: 80%;
+}
+
+
+/* Timeline Items */
+.timeline-item {
+  position: relative;
+  width: 50%;
+  padding: 30px;
+}
+
+.timeline-item.left {
+  left: 0;
+  text-align: right;
+}
+
+.timeline-item.right {
+  left: 50%;
+  text-align: left;
+}
+
+.education-card {
+  background: #fff; 
+  border: 2px solid var(--border);
+  border-radius: 16px;
+  padding: 40px 30px;
+  box-shadow: 0 6px 18px var(--shadow);
+  text-align: center; 
+  max-width: 400px;
+  min-height: 220px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center; 
+  justify-content: center;
+}
+
+.education-card .edu-logo {
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
+  margin-bottom: 20px;
+}
+
+.education-card h3 {
+  color: var(--accent);
+  margin-bottom: 8px;
+}
+
+.education-card .edu-subtitle {
+  font-weight: bold;   /* secondary bold text */
+  color: var(--text-secondary); /* softer than accent */
+  margin-bottom: 6px;
+}
+
+.timeline-item {
+  position: relative;
+  width: 50%;
+  padding: 30px 40px;  /* reduce extra padding so it hugs the line */
+  display: flex;
+  justify-content: flex-end; /* left items stay near the line */
+}
+
+.timeline-item::before {
+  content: '';
+  position: absolute;
+  top: 30px;
+  width: 24px;
+  height: 24px;
+  background: var(--accent);
+  border-radius: 50%;
+  border: 3px solid #fff;
+  z-index: 1;
+}
+
+.timeline-item.left::before {
+  right: -12px;
+}
+
+.timeline-item.right::before {
+  left: -12px;
+}
+
+.timeline-item.right {
+  left: 50%;
+  justify-content: flex-start; /* right items stay near the line */
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .timeline-item {
+    width: 100%;
+    text-align: center;
+    left: 0 !important;
+    margin-bottom: 40px;
+  }
+  .timeline::before {
+    left: 20px;
+  }
+  .timeline-item::before {
+    left: 10px;
+    right: auto;
+  }
+}
+
+/* Education images */
+.education-section .education-card .edu-logo {
+  display: block;
+  margin: 0 auto 15px auto;
+  width: 200px;             /* force larger image size */
+  height: auto;
+}
