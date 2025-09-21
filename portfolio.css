@@ -90,7 +90,7 @@ body {
 }
 
 .sub-heading {
-  font-size: 1.25rem;
+  font-size: 1.5rem;
   color: var(--text-secondary);
   text-align: center;
 }
@@ -948,7 +948,7 @@ body {
 
 /* Bigger font on cover */
 .main-heading {
-  font-size: 4rem; /* increased */
+  font-size: 5rem; /* increased */
   font-weight: 700;
 }
 
