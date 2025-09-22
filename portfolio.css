@@ -1539,29 +1539,29 @@ canvas#network-bg {
   height: auto;
 }
 
+.cv-btn {
+  background-color: #004e75; 
+  color: white;
+  border: none;
+  padding: 12px 25px;
+  font-size: 16px;
+  font-weight: 500;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.cv-btn:hover {
+  background-color: #082947; 
+  transform: translateY(-2px);
+  box-shadow: 0px 4px 10px rgba(0,0,0,0.2);
+}
+
 .cv-container {
   display: flex;
   justify-content: center;
   margin-top: 20px;
-}
-
-
-
-.cv-btn {
-  background-color: #004e75; /* dark blue */
-  color: white;
-  border: none;
-  border-radius: 8px;
-  padding: 12px 20px;
-  font-size: 15px;
-  font-weight: 600;
-  cursor: pointer;
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  transition: background 0.3s ease;
-}
-
-.cv-btn:hover {
-  background-color: #072d6b;
 }
