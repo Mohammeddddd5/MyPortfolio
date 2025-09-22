@@ -117,14 +117,20 @@ animate();
       Data Analyst Intern @ Elevvo Pathways<br>
       Data Analyst Intern @ Uneeq
     </p>
+    <div class="cv-container">
+      <button id="cvButton" class="cv-btn" data-aos="fade-up" data-aos-delay="600">
+        <i class="fa-solid fa-file-alt"></i> View CV
+      </button>
+    </div>
+
   </div>
 </section>
 
   <!-- About Section -->
 <section id="about" class="section">
   <div class="container">
-    <h2 class="section-heading" data-aos="fade-up">About Me</h2>
-    <div class="content-box" data-aos="fade-up" data-aos-delay="200">
+    <h2 class="section-heading" data-aos="fade-up" data-aos-delay="200">About Me</h2>
+    <div class="content-box" data-aos="fade-up" data-aos-delay="400">
       <p class="section-text large-text">
         I am a data scientist specialized in transforming raw & complex data into actionable insights.
         Using advanced data analytics, machine learning and problem solving, I help businesses find
@@ -137,11 +143,11 @@ animate();
 
 <!-- Education Section -->
 <section id="education" class="education-section">
-  <h2>Education</h2>
+  <h2 class="section-heading" data-aos="fade-up" data-aos-delay="200">Education</h2>
   <div class="timeline">
     
     <!-- Branch Left -->
-    <div class="timeline-item left">
+    <div class="timeline-item left" data-aos="fade-up" data-aos-delay="400">
       <div class="education-card">
         <img src="Cairo Uni.webp" alt="Cairo University Logo" class="edu-logo">
         <h3>Faculty of Computers & Artificial Intelligence</h3>
@@ -152,7 +158,7 @@ animate();
     </div>
 
     <!-- Branch Right -->
-    <div class="timeline-item right">
+    <div class="timeline-item right" data-aos="fade-up" data-aos-delay="600">
       <div class="education-card">
         <img src="DEPI.webp" alt="DEPI Logo" class="edu-logo">
         <h3>Digital Egyptian Pioneers Initiative</h3>
@@ -169,8 +175,8 @@ animate();
 <!-- Skills Section -->
 <section id="skills" class="section">
   <div class="container">
-    <h2 class="section-heading" data-aos="fade-up">Skills</h2>
-    <div class="skills-container" data-aos="fade-up" data-aos-delay="200">
+    <h2 class="section-heading" data-aos="fade-up" data-aos-delay="200">Skills</h2>
+    <div class="skills-container" data-aos="fade-up" data-aos-delay="400">
       
       <!-- Soft Skills -->
       <div class="skills-box">
@@ -224,9 +230,9 @@ animate();
 
 <section id="projects" class="section">
     <div class="container">
-        <h2 class="section-heading" data-aos="fade-up">Projects</h2>
+        <h2 class="section-heading" data-aos="fade-up" data-aos-delay="200">Projects</h2>
         
-        <div class="projects-tabs" data-aos="fade-up">
+        <div class="projects-tabs" data-aos="fade-up" data-aos-delay="400">
             <button class="tab-btn active" data-tab="all">All</button>
             <button class="tab-btn" data-tab="ml">Machine Learning & Deep Learning</button>
             <button class="tab-btn" data-tab="analysis">Data Analysis</button>
@@ -274,8 +280,8 @@ animate();
 <!-- Replace the existing Certificates Section -->
 <section id="certificates" class="section">
   <div class="container">
-    <h2 class="section-heading" data-aos="fade-up">Certificates</h2>
-    <div class="certificates-grid" data-aos="fade-up" data-aos-delay="200">
+    <h2 class="section-heading" data-aos="fade-up" data-aos-delay="200">Certificates</h2>
+    <div class="certificates-grid" data-aos="fade-up" data-aos-delay="400">
       
       <div class="certificate-card" onclick="showCertificateSlideshow('dataAnalyst', 0)">
         <img src="./Certificates/Associate Data Scientist.png" alt="Data Analyst in Python Certificate" class="certificate-thumb">
@@ -319,41 +325,46 @@ animate();
 <!-- Replace the existing certificate script with this updated version -->
 <script>
 const certificateData = {
-    'dataAnalyst': {
+
+    dataAnalyst: {
         name: 'Associate Data Scientist in Python',
         images: [
-        './Certificates/Associate Data Scientist.png',
-        './Certificates/Data Analyst in Python.png',
-        './Certificates/Python Data Fundamentals.png'
+            './Certificates/Associate Data Scientist.png',
+            './Certificates/Data Analyst in Python.png',
+            './Certificates/Python Data Fundamentals.png'
         ]
     },
-    'sqlAnalyst': {
-            name: 'Associate Data Analyst in SQL',
-            images: [
-                './Certificates/Associate Data Analyst in SQL.png',
-                './Certificates/SQL Fundamentals.png'
-            ]
-        },
-    'WebScraping': {
+
+    sqlAnalyst: {
+        name: 'Associate Data Analyst in SQL',
+        images: [
+            './Certificates/Associate Data Analyst in SQL.png',
+            './Certificates/SQL Fundamentals.png'
+        ]
+    },
+
+    WebScraping: {
         name: 'Web Scraping in Python',
         images: [
-        './Certificates/Web Scraping in Python.png',
+            './Certificates/Web Scraping in Python.png'
         ]
     },
-    'PowerBI': {
+
+    PowerBI: {
         name: 'PowerBI Fundamentals',
         images: [
-        './Certificates/Data Analyst in PowerBI.jpg',
-        // './Certificates/PowerBI Fundamentals.png'
+            './Certificates/Data Analyst in PowerBI.jpg'
         ]
     },
-    'Excel': {
+
+    Excel: {
         name: 'Excel Certificate',
         images: [
-        './Certificates/Excel.png',
+            './Certificates/Excel.png'
         ]
     }
 };
+
 
 let currentCert = '';
 let currentSlideIndex = 0;
@@ -391,6 +402,10 @@ document.addEventListener('keydown', (e) => {
     if (e.key === "Escape") modal.style.display = "none";
   }
 });
+document.getElementById("cvButton").addEventListener("click", () => {
+    window.open('./Resumes/Resume.pdf', '_blank'); 
+});
+
 
 // Close modal when clicking outside
 window.onclick = function(event) {
