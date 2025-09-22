@@ -948,7 +948,7 @@ body {
 
 /* Bigger font on cover */
 .main-heading {
-  font-size: 5rem; /* increased */
+  font-size: 4.25rem; /* increased */
   font-weight: 700;
 }
 
@@ -1537,4 +1537,31 @@ canvas#network-bg {
   margin: 0 auto 15px auto;
   width: 200px;             /* force larger image size */
   height: auto;
+}
+
+.cv-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+
+
+.cv-btn {
+  background-color: #004e75; /* dark blue */
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 12px 20px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: background 0.3s ease;
+}
+
+.cv-btn:hover {
+  background-color: #072d6b;
 }
