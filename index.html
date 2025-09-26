@@ -285,30 +285,34 @@ animate();
   <div class="container">
     <h2 class="section-heading" data-aos="fade-up" data-aos-delay="200">Certificates</h2>
     <div class="certificates-grid" data-aos="fade-up" data-aos-delay="400">
+
+      <div class="certificate-card" onclick="showCertificateSlideshow('MLSpecialization', 0)">
+        <img src="./Certificates/Supervised Learning.jpg" alt="Data Analyst in Python Certificate" class="certificate-thumb">
+        <h3 class="certificate-title">Supervised Machine Learning: Regression & Classification<br><small>DeepLearning.AI - September, 2025</small><small>33 Hours</small></h3>
+      </div>
       
       <div class="certificate-card" onclick="showCertificateSlideshow('dataAnalyst', 0)">
         <img src="./Certificates/Associate Data Scientist.png" alt="Data Analyst in Python Certificate" class="certificate-thumb">
-        <h3 class="certificate-title">Associate Data Scientist in Python<br><small>DataCamp - 2025</small><small>90 Hours</small></h3>
+        <h3 class="certificate-title">Associate Data Scientist in Python<br><small>DataCamp - September, 2025</small><small>90 Hours</small></h3>
       </div>
-
       <div class="certificate-card" onclick="showCertificateSlideshow('PowerBI', 0)">
         <img src="./Certificates/Data Analyst in PowerBI.jpg" alt="Data Analyst in PowerBI Certificate" class="certificate-thumb">
-        <h3 class="certificate-title">Data Analyst in PowerBI<br><small>DataCamp - 2025</small><small>50 Hours</small></h3>
+        <h3 class="certificate-title">Data Analyst in PowerBI<br><small>DataCamp - September, 2025</small><small>50 Hours</small></h3>
       </div>
 
       <div class="certificate-card" onclick="showCertificateSlideshow('sqlAnalyst', 0)">
         <img src="./Certificates/Associate Data Analyst in SQL.png" alt="Associate Data Analyst in SQL Certificate" class="certificate-thumb">
-        <h3 class="certificate-title">Associate Data Analyst in SQL<br><small>DataCamp - 2025</small><small>39 Hours</small></h3>
+        <h3 class="certificate-title">Associate Data Analyst in SQL<br><small>DataCamp - June, 2025</small><small>39 Hours</small></h3>
       </div>
       
       <div class="certificate-card" onclick="showCertificateSlideshow('Excel', 0)">
         <img src="./Certificates/Excel.png" alt="Excel Certificate" class="certificate-thumb">
-        <h3 class="certificate-title">Excel Certificate<br><small>Udemy - 2025</small><small>22 Hours</small></h3>
+        <h3 class="certificate-title">Excel Certificate<br><small>Udemy - August, 2025</small><small>22 Hours</small></h3>
       </div>
 
       <div class="certificate-card" onclick="showCertificateSlideshow('WebScraping', 0)">
         <img src="./Certificates/Web Scraping in Python.png" alt="Web Scraping in Python Certificate" class="certificate-thumb">
-        <h3 class="certificate-title">Web Scraping in Python<br><small>Udemy - 2025</small><small>12 Hours</small></h3>
+        <h3 class="certificate-title">Web Scraping in Python<br><small>Udemy - July, 2025</small><small>12 Hours</small></h3>
       </div>
 
       
@@ -328,6 +332,13 @@ animate();
 <!-- Replace the existing certificate script with this updated version -->
 <script>
 const certificateData = {
+
+    MLSpecialization: {
+        name: 'Machine Learning Specialization',
+        images: [
+            './Certificates/Supervised Learning.jpg'
+        ]
+    },
 
     dataAnalyst: {
         name: 'Associate Data Scientist in Python',
