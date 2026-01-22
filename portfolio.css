@@ -1570,3 +1570,14 @@ canvas#network-bg {
   justify-content: center;
   margin-top: 20px;
 }
+
+/* Experience hover effect */
+.experience-card {
+  cursor: pointer;
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+.experience-card:hover {
+  transform: scale(1.06);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+}
