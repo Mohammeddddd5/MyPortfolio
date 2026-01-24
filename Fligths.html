@@ -75,7 +75,10 @@
             </ul>
         </div>
         <div class="content-image">
-            <img src="Projects/Flights Delay/1- Cancellation Analysis.png" alt="Project visual">
+            <img src="Projects/Flights Delay/1- Cancellation Analysis.png" 
+                 alt="Project visual"
+                 class="project-clickable"
+                 onclick="openProjectImage(this.src)">
         </div>
     </section>
 
@@ -105,7 +108,10 @@
             </ul>
         </div>
         <div class="content-image">
-            <img src="Projects/Flights Delay/2- Departure Delays.png" alt="Project visual">
+            <img src="Projects/Flights Delay/2- Departure Delays.png" 
+                 alt="Project visual"
+                 class="project-clickable"
+                 onclick="openProjectImage(this.src)">
         </div>
     </section>
 
@@ -134,7 +140,10 @@
             </ul>
         </div>
         <div class="content-image">
-            <img src="Projects/Flights Delay/3- Arrival Delays.png" alt="Project visual">
+            <img src="Projects/Flights Delay/3- Arrival Delays.png" 
+                 alt="Project visual"
+                 class="project-clickable"
+                 onclick="openProjectImage(this.src)">
         </div>
     </section>
 
@@ -160,7 +169,10 @@
             </ul>
         </div>
         <div class="content-image">
-            <img src="Projects/Flights Delay/4- Delays by Other Metrics.png" alt="Project visual">
+            <img src="Projects/Flights Delay/4- Delays by Other Metrics.png" 
+                 alt="Project visual"
+                 class="project-clickable"
+                 onclick="openProjectImage(this.src)">
         </div>
     </section>
 
@@ -172,7 +184,10 @@
             </p>
         </div>
         <div class="content-image">
-            <img src="Projects/Flights Delay/5- Flight Routes.png" alt="Project visual">
+            <img src="Projects/Flights Delay/5- Flight Routes.png" 
+                 alt="Project visual"
+                 class="project-clickable"
+                 onclick="openProjectImage(this.src)">
         </div>
     </section>
 
@@ -192,6 +207,12 @@
             </p>
         </div>
     </section>
-</body>
 
+    <!-- Image Modal -->
+    <div id="certModal" class="modal">
+        <span class="close-modal" onclick="closeProjectModal()">&times;</span>
+        <img id="certImage" class="modal-content">
+    </div>
+
+</body>
 </html>

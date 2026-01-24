@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Olist Insights</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="Projects.css">
+</head>
+<body>
+    <!-- Header -->
+    <canvas id="network-bg"></canvas>
+    <script src="Projects.js"></script>
+    <header>
+        <div class="nav-container">
+        <h1 class="logo">Mohammed Yasser</h1>
+        <nav class="nav-links">
+            <a href="index.html">Back to Portfolio</a>
+        </nav>
+        </div>
+    </header>
+
+    <!-- Project Header -->
+    <section class="project-header">
+        <h1 class="project-title">Business Insights & Executive Report for Olist</h1>
+
+        <p class="project-overview">
+            <b>Project Overview: </b>As a part of my Elevvo Pathways Data Analysis Intenship, I worked on an analytics project focused on analyzing business insights for Olist.
+            Given a large dataset contaning:
+        </p>
+        <ul class="project-overview-list">
+            <li>A Table of Olist's customers information</li>
+            <li>Another table for products & their details</li>
+            <li>Orders table that shows details about orders, such as total value, product purchased and customer making the purchase</li>
+            <li>More tables that contains additional information about orders, such as reviews & payment methods</li>
+        </ul>
+
+        <p class="project-overview">
+            The goal of this project is to conduct a full-cycle analysis on this e-commerce dataset, by cleaning, preprocessing, 
+            analyzing the data and finally creating an executive report to showcase the key insights uncovered and provide recommendations
+            based on the findings that drives business decisions.
+        </p>
+        <p class="project-overview">
+            <b>Tools Used for Project: </b> Python for data cleaning & preprocessing, PowerBI for creating an executive report
+        </p>
+    </section>
+
+    <!-- Content Sections -->
+    <section class="content-section">
+        <div class="content-text">
+            <h2>Revenue & Orders Overview</h2>
+            <p>
+                The first & main part of our analysis, it explores insights about Olist's orders and 
+                revenue to get a general overview of the business performance. Key insights:
+            </p>
+            <ul class="project-overview-list">
+                <li>
+                    Average Olist order value is 166 BRL (Brazilian Real)
+                </li>
+                <li>
+                    Total revenue is 16M BRL from a total of 99.4k Orders
+                </li>
+                <li>
+                    Average Order Freight value is 20 BRL, which is about 12% of the average order value
+                </li>
+                <li>
+                    Revenue & Purchase Count Drops during the final quarter of the year, possibly due to holiday seasons. and peaks during summer
+                </li>
+                <li>
+                    Sao Paulo is the state with the highest revenue and order count, followed by rio de janeiro and Minas Gerais
+                </li>
+                <li>
+                    Revenue & Orders count keeps increasing during time, with august 2018 being the highest month for both metrics
+                </li>
+            </ul>
+        </div>
+        <div class="content-image">
+        <img src="Projects/Olist Insights/1- Revenue & Orders Overview.png"
+            alt="Project visual"
+            class="project-clickable"
+            onclick="openProjectImage(this.src)">
+        </div>
+    </section>
+
+    <section class="content-section">
+        <div class="content-text">
+            <h2>Products Analysis</h2>
+            <p>
+                Aims to analyze Olist's products and their performance, key insights are:
+            </p>
+            <ul class="project-overview-list">
+                <li>
+                    Olist has a total of 32.95k products and 71 product categories, with health & beauty being the most sold category and cds/dvds being the highest rated category
+                </li>
+                <li>
+                    Olist has an average delivery time of 12 days
+                </li>
+                <li>
+                    3.1k Sellers are registered on Olist platform
+                </li>
+                <li>
+                    Sao paulo is the state with the highest number of sellers, including 1.2k sellers from the city of Sao Paulo itself
+                </li>
+                <li>
+                    Highest selling product category is bed & bath, followed by health & beauty and sports leisure
+                </li>
+            </ul>
+        </div>
+        <div class="content-image">
+        <img src="Projects/Olist Insights/2- Product Analysis.png"
+            alt="Project visual"
+            class="project-clickable"
+            onclick="openProjectImage(this.src)">
+        </div>
+    </section>
+
+    <section class="content-section">
+        <div class="content-text">
+            <h2>Customers Analysis</h2>
+            <p>
+                The goal is to analyze Olist's customers and their behavior, key insights are:
+            </p>
+            <ul class="project-overview-list">
+                <li>
+                    Olist has a total of 96.46k customers, with 3.36% of them being repeat customers
+                </li>
+                <li>
+                    Average shipping time is 9.28 days
+                </li>
+                <li>
+                    Average review score for products is 4.1 out of 5
+                </li>
+                <li>
+                    most orders occur on mondays & tuesdays, suggesting that customers prefer to shop at the beginning of the week
+                </li>
+                <li>
+                    Most customers come from sao paulo, followed by minas gerais and rio de janeiro
+                </li>
+                <li>
+                    Near half of Olist's customers had only 1 payment installment, with only 10.2% of customers opting for 8 or more instalments
+                </li>
+            </ul>
+        </div>
+        <div class="content-image">
+        <img src="Projects/Olist Insights/3- Customer Analysis.png"
+            alt="Project visual"
+            class="project-clickable"
+            onclick="openProjectImage(this.src)">
+        </div>
+    </section>
+
+    <section class="content-section">
+        <div class="content-text">
+            <h2>Summary & Final Recommendations</h2>
+            <p>
+                Based on the analysis, the final page includes a summary of key insights and recommendations for Olist to improve their business performance,
+                and recommendations to improve the performance of various aspects of the business <b>(Click on image to preview)</b>
+            </p>
+        </div>
+        <div class="content-image">
+        <img src="Projects/Olist Insights/4- Summary & Recommendations.png"
+            alt="Project visual"
+            class="project-clickable"
+            onclick="openProjectImage(this.src)">
+        </div>
+    </section>
+    <!-- Image Modal (reused from certificates) -->
+    <div id="certModal" class="modal">
+    <span class="close-modal" onclick="closeProjectModal()">&times;</span>
+    <img id="certImage" class="modal-content">
+    </div>
+
+</body>
+</html>

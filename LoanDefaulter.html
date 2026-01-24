@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loan Defaulter Prediction</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="Projects.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
+</head>
+<body>
+    <!-- Header -->
+    <canvas id="network-bg"></canvas>
+    <script src="Projects.js"></script>
+   <header>
+        <div class="nav-container">
+        <h1 class="logo">Mohammed Yasser</h1>
+        <nav class="nav-links">
+            <a href="index.html">Back to Portfolio</a>
+        </nav>
+        </div>
+    </header>
+
+    <!-- Project Header -->
+    <section class="project-header">
+        <h1 class="project-title">Loan Defaulter Risk Prediction System</h1>
+        <p class="project-overview">
+            <b> Project Overview: </b> As part of the Digital Egyptians Pioneers Initiative (DEPI), I led a team of five in developing a Loan Defaulter Risk Prediction System 
+                as a graduation project. The system is designed to predict the likelihood of loan default among applicants using machine learning techniques. 
+                My role involved coordinating the team, defining the project scope, and contributing across all stages of the pipeline, including data collection, 
+                preprocessing, feature engineering, model selection, training, and evaluation. The final model was deployed as a web-based application to enable 
+                easy access for financial institutions. Below is a detailed breakdown of the project, including problem formulation, target end users, and project workflow.<br>
+            <br>
+            <b>Tools Used:</b> Python, Pandas, NumPy, Matplotlib, Seaborn, Scikit-learn, Flask, HTML/CSS
+        </p>
+    </section>
+    <div class="section-divider">
+        <span class="line"></span>
+        <h1>Problem Foundation & Dataset Overview</h1>
+        <span class="line"></span>
+    </div>
+
+    <!-- Problem Description & Proposed Solution -->
+    <section class="project-header">
+        <h1 style="font-size: 36px">Problem Description & Proposed Solution</h1>
+        <br>
+        <p class="project-overview">
+                <b>Problem Description:</b> Lending companies face significant challenges when assessing the creditworthiness of customers, 
+                especially those with limited or no credit history. Without clear insights into a customer's financial behaviour, 
+                institutions risk either approving loans to high-risk borrowers or rejecting reliable clients.
+                Both scenarios negatively impact business performance and financial stability.
+                <br><br>
+                <b>Proposed Solution:</b> The project uses Exploratory Data Analysis to study customer demographics, 
+                financial profile & historical behaviour to uncover patterns related to loan defaults. By analyzing key features 
+                (such as loan history, credit behaviour & repayment patterns) the solution identifies the factors that associates strongly with default risk.       
+                These Insights help organizations make data driven decisions on loan approval, risk classification & policy adjustments
+            <br>
+        </p>
+    </section>
+    <section class="project-header">
+        <h1 style="font-size: 36px">DataSet Overview</h1>
+        <br>
+
+        <div class="project-overview">
+            We used the Loan Defaulter Dataset from Kaggle (Lending Club), which contains historical data on loan applicants.
+            The dataset includes the following tables:
+            <br><br>
+
+            <b>Previous Application Data:</b> 37 features containing information about clients' previous loan applications,
+            aimed at analyzing past patterns and identifying risk factors for defaults.
+            <ul class="project-overview-list">
+                <li>Customer demographics (age, gender, occupation)</li>
+                <li>Loan performance and repayment history</li>
+                <li>Credit behavior and previous loan outcomes</li>
+            </ul>
+
+            <b>Application Data:</b> 122 features containing client information at the time of loan application,
+            including payment difficulty indicators. This data is used to evaluate new applications and predict default risk.
+            <ul class="project-overview-list">
+                <li>Customer demographics and financial attributes</li>
+                <li>Employment information and existing debts</li>
+                <li>Requested loan details and terms</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Project Development Methodologies -->
+    <div class="section-divider">
+        <span class="line"></span>
+        <h1>Milestone 1: Data Exploration & Preprocessing</h1>
+        <span class="line"></span>
+    </div>
+    <section class="project-header">
+        <h1 style="font-size: 36px">1. Data Cleaning & Preprocessing</h1>
+        <br>
+        <div class="project-overview">
+            After exploring the dataset structure, feature types, distributions, missing values and key variables influencing loan defaults,
+            we performed extensive data cleaning to ensure data quality and reliability. This involved:
+            <br><br>
+            <b>Handling Data Inconsistencies:</b>  
+            <ul class="project-overview-list">
+                <li>Removed inconsistent entries, duplicates & invalid records</li>
+                <li>Standardized data formats</li>
+                <li>Ensured that the dataset is reliable and ready for analysis & modeling</li>
+            </ul>
+            <b>Handling Nulls & Outliers:</b>
+            <ul class="project-overview-list">
+                <li>Treated missing values through appropriate imputation techniques</li>
+                <li>Detected and managed extreme values that could disort the model</li>
+                <li>Ensured data quality for reliable & stable model performance</li>
+            </ul>
+        </div>
+    </section>
+    
+    <section class="project-header">
+        <h1 style="font-size: 36px">2. Exploratory Data Analysis (EDA)</h1>
+        <br>
+
+        <div class="project-overview">
+            After cleaning the dataset, we performed a series of EDA steps to understand patterns, 
+            detect trends, and extract meaningful insights: <br>
+            <li>Univariate Analysis: Examined individual features (income, age, loan amount, credit score).</li>
+            <li>Bivariate Analysis: Compared key features with the target variable (loan default).</li>
+            <li>Correlation Analysis: Generated a correlation matrix and heatmap to detect strong relationships between numerical features.</li>
+            <li>Outlier Behavior & Distribution Checks: Evaluated variable ranges using boxplots and statistical metrics.</li>
+            <li>Categorical Feature Exploration: Analyzed categories such as education, occupation, marital status, and housing type.</li>       
+            <br>Below are some visualizations from the EDA process:
+        </div>
+        
+        <!-- EDA Slideshow - MOVED OUTSIDE project-overview -->
+        <div class="slideshow-section">
+            <div class="slideshow-container">
+                <button class="slideshow-nav prev" onclick="changeSlide(-1)">&#10094;</button>
+                
+                <div class="slideshow-image-wrapper">
+                    <img id="slideshow-image" src="./Projects/Loan Defaulter/Screenshot_0.png" alt="EDA Visualization" onclick="openSlideshowModal()">
+                    <div class="slideshow-controls">
+                        <div class="slideshow-dots">
+                            <span class="dot active" onclick="currentSlide(1)"></span>
+                            <span class="dot" onclick="currentSlide(2)"></span>
+                            <span class="dot" onclick="currentSlide(3)"></span>
+                            <span class="dot" onclick="currentSlide(4)"></span>
+                            <span class="dot" onclick="currentSlide(5)"></span>
+                            <span class="dot" onclick="currentSlide(6)"></span>
+                            <span class="dot" onclick="currentSlide(7)"></span>
+                            <span class="dot" onclick="currentSlide(8)"></span>
+                            <span class="dot" onclick="currentSlide(9)"></span>
+                        </div>
+                        <button class="zoom-btn" onclick="openSlideshowModal()">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="11" cy="11" r="8"></circle>
+                                <path d="m21 21-4.35-4.35"></path>
+                                <line x1="11" y1="8" x2="11" y2="14"></line>
+                                <line x1="8" y1="11" x2="14" y2="11"></line>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+                <button class="slideshow-nav next" onclick="changeSlide(1)">&#10095;</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Slideshow Modal -->
+    <div id="slideshowModal" class="modal">
+        <span class="close-modal" onclick="closeSlideshowModal()">&times;</span>
+        <img id="slideshowModalImage" class="modal-content">
+    </div>
+
+    <!-- Image Modal for other images -->
+    <div id="certModal" class="modal">
+        <span class="close-modal" onclick="closeProjectModal()">&times;</span>
+        <img id="certImage" class="modal-content">
+    </div>
+    <section class="project-header">
+        <h1 style="font-size: 36px">3. Data Preparation & Feature Engineering</h1>
+        <br>
+        <div class="project-overview">
+            The final stage of Milestone 1 and before model development, involved preparing the data and engineering features to enhance model performance:
+            <br><br>
+            <b>Feature Engineering:</b>
+            <ul class="project-overview-list">
+                <li>Created meaningful new features from existing data</li>
+                <li>Transformed variables to improve model learning </li>
+            </ul>
+            <b>Data Preparation:</b>
+            <ul class="project-overview-list">
+                <li>Applied SMOTE (Synthetic Minority Oversampling Technique) to balance the dataset, since targets were imbalanced 
+                    as seen in the first image of the EDA slideshow</li>
+                <li>Applied Tomek Links to remove noisy samples and improve model robustness</li>
+            </ul>
+        </div>
+    </section>
+
+
+    <!-- Data Modeling Section -->
+    <div class="section-divider">
+        <span class="line"></span>
+        <h1>Milestone 2: Data Modeling</h1>
+        <span class="line"></span>
+    </div>
+    <section class="project-header">
+        <h1 style="font-size: 36px">Data Modeling Overview</h1>
+        <br>
+        <div class="project-overview">
+            In this milestone, we developed and evaluated multiple machine learning models to predict loan default risk. Since this is a
+            binary classification problem and the dataset was imbalanced, we focused on metrics like Precision, Recall, F1-Score, and ROC-AUC to assess model performance.
+            We used 3 different tree based algorithms known for their effectiveness in classification tasks:
+            <br>
+            <ul class="project-overview-list">
+                <li>CatBoost</li>
+                <li>Random Forests</li>
+                <li>LightGBM</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Machine Learning Model Section -->
+    <section class="project-header">
+        <h1 style="font-size: 36px">1. CatBoost</h1>
+        <br>
+
+        <div class="project-overview">
+            Our first selected model was Catboost. We chose CatBoost classifier due to its excellent performance with categorical features 
+            and imbalanced datasets. Below are the code cells showing the model configuration, training process, and evaluation results, Here is a snipet of the implementation:
+        </div>
+
+        <!-- Jupyter Cell 1: Model Configuration -->
+        <div class="jupyter-cell">
+            <div class="cell-input">
+                <div class="prompt">In [28]:</div>
+                <div class="code-area">
+                    <pre><code class="language-python">from catboost import CatBoostClassifier
+    from sklearn.metrics import classification_report, confusion_matrix, roc_auc_score
+
+    cat_features_index = [X_train.columns.get_loc(c) for c in cat_cols]
+
+    model = CatBoostClassifier(
+        iterations=600,
+        learning_rate=0.05,
+        depth=8,
+        eval_metric='AUC',
+        verbose=100,
+        class_weights=[1, 10]  # Give higher weight to minority class
+    )</code></pre>
+                </div>
+            </div>
+        </div>
+
+        <!-- Jupyter Cell 2: Model Training -->
+        <div class="jupyter-cell">
+            <div class="cell-input">
+                <div class="prompt">In [30]:</div>
+                <div class="code-area">
+                    <pre><code class="language-python">model.fit(
+        X_train,
+        y_train,
+        cat_features=cat_features_index,
+        eval_set=(X_test, y_test)
+    )</code></pre>
+                </div>
+            </div>
+            <div class="cell-output">
+                <div class="prompt"></div>
+                <div class="output-area">
+                    <pre>0:      test: 0.7845027 best: 0.7845027 (0)    total: 3.38s    remaining: 33m 47s
+    100:    test: 0.9624609 best: 0.9624609 (100)  total: 3m 41s   remaining: 18m 13s
+    200:    test: 0.9647902 best: 0.9647902 (200)  total: 7m 1s    remaining: 13m 57s
+    300:    test: 0.9660869 best: 0.9660869 (300)  total: 10m 20s  remaining: 10m 16s
+    400:    test: 0.9672696 best: 0.9672696 (400)  total: 13m 52s  remaining: 6m 52s
+    500:    test: 0.9676717 best: 0.9676717 (500)  total: 17m 22s  remaining: 3m 26s
+    599:    test: 0.9679795 best: 0.9679827 (596)  total: 20m 52s  remaining: 0us
+
+    bestTest = 0.9679826684
+    bestIteration = 596
+
+    Shrink model to first 597 iterations.</pre>
+                </div>
+            </div>
+            <div class="cell-output">
+                <div class="prompt">Out[30]:</div>
+                <div class="output-area">
+                    <pre>&lt;catboost.core.CatBoostClassifier at 0x7d64a3ee6210&gt;</pre>
+                </div>
+            </div>
+        </div>
+
+        <!-- Jupyter Cell 3: Predictions -->
+        <div class="jupyter-cell">
+            <div class="cell-input">
+                <div class="prompt">In [31]:</div>
+                <div class="code-area">
+                    <pre><code class="language-python">y_pred = model.predict(X_test)</code></pre>
+                </div>
+            </div>
+        </div>
+
+        <!-- Jupyter Cell 4: Probability Predictions -->
+        <div class="jupyter-cell">
+            <div class="cell-input">
+                <div class="prompt">In [32]:</div>
+                <div class="code-area">
+                    <pre><code class="language-python">y_prob = model.predict_proba(X_test)[:, 1]</code></pre>
+                </div>
+            </div>
+        </div>
+
+        <!-- Jupyter Cell 5: Evaluation Metrics -->
+        <div class="jupyter-cell">
+            <div class="cell-input">
+                <div class="prompt">In [33]:</div>
+                <div class="code-area">
+                    <pre><code class="language-python"># Confusion matrix
+    print("Confusion Matrix:")
+    print(confusion_matrix(y_test, y_pred))
+
+    # Classification report
+    print("\nClassification Report:")
+    print(classification_report(y_test, y_pred))
+
+    # ROC-AUC Score
+    roc_auc = roc_auc_score(y_test, y_prob)
+    print("\nROC-AUC Score:", roc_auc)</code></pre>
+                </div>
+            </div>
+            <div class="cell-output">
+                <div class="prompt"></div>
+                <div class="output-area">
+                    <pre>Confusion Matrix:
+    [[24751 11907]
+    [ 1131 28196]]
+
+    Classification Report:
+                precision    recall  f1-score   support
+
+            0       0.96      0.68      0.79     36658
+            1       0.70      0.96      0.81     29327
+
+        accuracy                           0.80     65985
+    macro avg       0.83      0.82      0.80     65985
+    weighted avg       0.84      0.80      0.80     65985
+
+
+    ROC-AUC Score: 0.9679826683821011</pre>
+                </div>
+            </div>
+        </div>
+
+    </section>
+    <section class="project-header">
+        <h1 style="font-size: 36px">2. Random Forest</h1>
+        <br>
+
+        <div class="project-overview">
+            Our second selected model was Random Forest. We chose Random Forest due to its robustness, ability to handle 
+            complex feature interactions, and resistance to overfitting. Below are the code cells showing the model 
+            training, evaluation metrics, and confusion matrix visualization. Here is a snippet of the implementation:
+        </div>
+
+        <!-- Jupyter Cell 1: Model Training and Evaluation -->
+        <div class="jupyter-cell">
+            <div class="cell-input">
+                <div class="prompt">In [ ]:</div>
+                <div class="code-area">
+                    <pre><code class="language-python">from sklearn.metrics import accuracy_score, classification_report
+
+    y_pred = final_rf.predict(X_train)
+    print("Train Accuracy:", accuracy_score(y_train, y_pred))
+    print(classification_report(y_train, y_pred))
+
+    y_pred = final_rf.predict(X_test)
+    print("Test Accuracy:", accuracy_score(y_test, y_pred))
+    print(classification_report(y_test, y_pred))</code></pre>
+                </div>
+            </div>
+            <div class="cell-output">
+                <div class="prompt"></div>
+                <div class="output-area">
+                    <pre>Train Accuracy: 0.999928013942627
+                precision    recall  f1-score   support
+
+            0       1.00      1.00      1.00    146634
+            1       1.00      1.00      1.00    117306
+
+        accuracy                           1.00    263940
+    macro avg       1.00      1.00      1.00    263940
+    weighted avg       1.00      1.00      1.00    263940
+
+    Test Accuracy: 0.9394104720769872
+                precision    recall  f1-score   support
+
+            0       0.91      0.99      0.95     36658
+            1       0.99      0.87      0.93     29327
+
+        accuracy                           0.94     65985
+    macro avg       0.95      0.93      0.94     65985
+    weighted avg       0.94      0.94      0.94     65985</pre>
+                </div>
+            </div>
+        </div>
+
+        <!-- Jupyter Cell 2: Confusion Matrix Visualization -->
+        <div class="jupyter-cell">
+            <div class="cell-input">
+                <div class="prompt">In [ ]:</div>
+                <div class="code-area">
+                    <pre><code class="language-python">cm = confusion_matrix(y_test, y_pred)
+    print("Confusion Matrix:\n", cm)
+
+    # Plot confusion matrix
+    plt.figure(figsize=(6,4))
+    sns.heatmap(cm, annot=True, fmt='d', cmap='Blues',
+                xticklabels=[0,1], yticklabels=[0,1])
+    plt.xlabel('Predicted')
+    plt.ylabel('Actual')
+    plt.title('Confusion Matrix')
+    plt.show()</code></pre>
+                </div>
+            </div>
+            <div class="cell-output">
+                <div class="prompt"></div>
+                <div class="output-area">
+                    <pre>Confusion Matrix:
+    [[36434   224]
+    [ 3774 25553]]</pre>
+                </div>
+            </div>
+            <div class="cell-output">
+                <div class="prompt"></div>
+                <div class="output-area">
+                    <img src="./Projects/Loan Defaulter/RF_confusion_matrix.png" alt="Random Forest Confusion Matrix">
+                </div>
+            </div>
+        </div>
+
+    </section>
+    <section class="project-header">
+        <h1 style="font-size: 36px">3. LightGBM</h1>
+        <br>
+
+        <div class="project-overview">
+            Our third selected model was LightGBM. We chose LightGBM for its exceptional speed, efficiency with large datasets, 
+            and superior handling of categorical features through native support. Below are the code cells showing the model 
+            predictions, evaluation metrics, confusion matrix, and ROC-AUC score. Here is a snippet of the implementation:
+        </div>
+
+        <!-- Jupyter Cell 1: Classification Report -->
+        <div class="jupyter-cell">
+            <div class="cell-input">
+                <div class="prompt">In [16]:</div>
+                <div class="code-area">
+                    <pre><code class="language-python">y_pred = final_model.predict(X_test)
+    print(classification_report(y_test, y_pred))</code></pre>
+                </div>
+            </div>
+            <div class="cell-output">
+                <div class="prompt"></div>
+                <div class="output-area">
+                    <pre>              precision    recall  f1-score   support
+
+            0       0.91      0.99      0.95     36658
+            1       0.99      0.88      0.93     29327
+
+        accuracy                           0.94     65985
+    macro avg       0.95      0.94      0.94     65985
+    weighted avg       0.95      0.94      0.94     65985</pre>
+                </div>
+            </div>
+        </div>
+
+        <!-- Jupyter Cell 2: Accuracy Score -->
+        <div class="jupyter-cell">
+            <div class="cell-input">
+                <div class="prompt">In [17]:</div>
+                <div class="code-area">
+                    <pre><code class="language-python">print(accuracy_score(y_test, y_pred))</code></pre>
+                </div>
+            </div>
+            <div class="cell-output">
+                <div class="prompt"></div>
+                <div class="output-area">
+                    <pre>0.9447298628476168</pre>
+                </div>
+            </div>
+        </div>
+
+        <!-- Jupyter Cell 3: Confusion Matrix -->
+        <div class="jupyter-cell">
+            <div class="cell-input">
+                <div class="prompt">In [18]:</div>
+                <div class="code-area">
+                    <pre><code class="language-python">cm = confusion_matrix(y_test, y_pred)
+    print("Confusion Matrix:\n", cm)</code></pre>
+                </div>
+            </div>
+            <div class="cell-output">
+                <div class="prompt"></div>
+                <div class="output-area">
+                    <pre>Confusion Matrix:
+    [[36454   204]
+    [ 3443 25884]]</pre>
+                </div>
+            </div>
+        </div>
+
+        <!-- Jupyter Cell 4: ROC-AUC Score -->
+        <div class="jupyter-cell">
+            <div class="cell-input">
+                <div class="prompt">In [19]:</div>
+                <div class="code-area">
+                    <pre><code class="language-python">y_prob = final_model.predict_proba(X_test)[:, 1]
+    roc_auc = roc_auc_score(y_test, y_prob)
+    print("ROC AUC Score:", roc_auc)</code></pre>
+                </div>
+            </div>
+            <div class="cell-output">
+                <div class="prompt"></div>
+                <div class="output-area">
+                    <pre>ROC AUC Score: 0.9700875896946709</pre>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="project-header">
+        <h1 style="font-size: 36px">4. Model Selection</h1>
+        <br>
+        <div class="project-overview">
+            After evaluating all three models based on key performance metrics (Precision, Recall, F1-Score, ROC-AUC),
+            we can see that CatBoost was the least effective among the three models, while LightGBM slightly outperformed Random Forest in terms of ROC-AUC score.
+            Therefore, we selected <b>LightGBM</b> as the final model for deployment due to its superior performance in predicting loan default risk.
+    </section>
+    <div class="section-divider">
+        <span class="line"></span>
+        <h1>Milestone 3: Model Deployment</h1>
+        <span class="line"></span>
+    </div>
+
+    <section class="project-header">
+        <h1 style="font-size: 36px">Prediction System Application</h1>
+        <br>
+        <div class="project-overview">
+            After selecting LightGBM as the final model, we deployed it as a web-based application using Streamlit.
+            The application allows users to input loan applicant data and receive real-time predictions on default risk.
+            This deployment makes the model accessible to financial institutions for practical use in loan approval processes.
+            It has the next Features:
+            <br><br>
+            <li><b>Application Information:</b> in this part, user has to enter current applicant's relevant data, including personal information, financial & external factors and process & social factors.</li>
+            <li><b>Aggregated Previous Application Information:</b> user has to enter the required previous application summary data, seen in image.</li>
+            <li><b>Integration with Gemini Chatbot:</b> the application includes a chatbot for user interaction, so user can ask questions about the loan application process.</li>
+            <li><b>Final Prediction:</b> after entering all the required information, the system provides a final prediction on whether the applicant is likely to default on their loan, 
+                it also provides the probability that the applicant is a defaulter, as if the probability is somewhat high and output is non-defaulter (threshold is 0.5), user is notified.</li>
+            <br>
+            Below are screenshots of the application interface:
+        </div>
+        
+        <!-- Streamlit App Slideshow -->
+        <div class="slideshow-section">
+            <div class="slideshow-container">
+                <button class="slideshow-nav prev" onclick="changeStreamlitSlide(-1)">&#10094;</button>
+                
+                <div class="slideshow-image-wrapper">
+                    <img id="streamlit-slideshow-image" src="./Projects/Loan Defaulter/Streamlit_1.png" alt="Streamlit Application" onclick="openStreamlitModal()">
+                    <div class="slideshow-controls">
+                        <div class="slideshow-dots">
+                            <span class="streamlit-dot active" onclick="currentStreamlitSlide(1)"></span>
+                            <span class="streamlit-dot" onclick="currentStreamlitSlide(2)"></span>
+                            <span class="streamlit-dot" onclick="currentStreamlitSlide(3)"></span>
+                        </div>
+                        <button class="zoom-btn" onclick="openStreamlitModal()">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="11" cy="11" r="8"></circle>
+                                <path d="m21 21-4.35-4.35"></path>
+                                <line x1="11" y1="8" x2="11" y2="14"></line>
+                                <line x1="8" y1="11" x2="14" y2="11"></line>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+                
+                <button class="slideshow-nav next" onclick="changeStreamlitSlide(1)">&#10095;</button>
+            </div>
+        </div>
+
+        <!-- App Link -->
+        <div class="project-overview" style="text-align: left; margin-top: 2rem;">
+            You can view the live application by clicking 
+            <a href="https://defaulter-depi.streamlit.app/" target="_blank" style="color: #004e75; font-weight: bold; text-decoration: underline;">here</a><br>
+            <b>NOTE:</b> The chatbot will most likely not function due to API limitations.
+        </div>
+    </section>
+
+    <!-- Streamlit Slideshow Modal -->
+    <div id="streamlitModal" class="modal">
+        <span class="close-modal" onclick="closeStreamlitModal()">&times;</span>
+        <img id="streamlitModalImage" class="modal-content">
+    </div>
+    <br><br>
+
+</body>
+</html>

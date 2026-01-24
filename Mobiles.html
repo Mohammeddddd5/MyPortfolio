@@ -24,7 +24,7 @@
     <section class="project-header">
         <h1 class="project-title">Mobile Phones Analysis</h1>
         <p class="project-overview">
-            <b>Overview: </b>This project focuses on analyzing mobile phone sales data to uncover trends, customer preferences, and key features that drive sales.
+            <b>Project Overview: </b>This project focuses on analyzing mobile phone sales data to uncover trends, customer preferences, and key features that drive sales.
             The dataset includes information on various mobile phone models, their specifications, sales figures, and customer reviews.
             The goal is to provide insights that can help manufacturers and retailers understand market dynamics and customer needs.<br><br>
             <b>Tools Used:</b> Excel for data cleaning and preprocessing, PowerBI for creating a dynamic dashboard
@@ -47,7 +47,10 @@
             </ul>
         </div>
         <div class="content-image">
-            <img src="Projects/Mobile Phones/Brand Analysis.png" alt="Project visual">
+            <img src="Projects/Mobile Phones/Brand Analysis.png" 
+                 alt="Project visual"
+                 class="project-clickable"
+                 onclick="openProjectImage(this.src)">
         </div>
     </section>
 
@@ -65,11 +68,18 @@
             </ul>
         </div>
         <div class="content-image">
-            <img src="Projects/Mobile Phones/Phone Analysis.png" alt="Project visual">
+            <img src="Projects/Mobile Phones/Phone Analysis.png" 
+                 alt="Project visual"
+                 class="project-clickable"
+                 onclick="openProjectImage(this.src)">
         </div>
     </section>
 
-    <!-- Add more content sections as needed -->
-</body>
+    <!-- Image Modal -->
+    <div id="certModal" class="modal">
+        <span class="close-modal" onclick="closeProjectModal()">&times;</span>
+        <img id="certImage" class="modal-content">
+    </div>
 
+</body>
 </html>

@@ -24,7 +24,7 @@
     <section class="project-header">
         <h1 class="project-title">Employee Attrition Analysis</h1>
         <p class="project-overview">
-            <b>Overview: </b>This project focuses on understanding employee attrition, why do employees leave their companies? is it because of the work environment,
+            <b>Project Overview: </b>This project focuses on understanding employee attrition, why do employees leave their companies? is it because of the work environment,
             salary, or other factors? The goal is to analyze the data and provide insights that can help organizations improve retention strategies. <br><br>
             In this project, I have used a dataset of employees from a company with over 1400 employees, analyzing various factors such as job satisfaction, 
             salary, and work-life balance to answer:
@@ -58,7 +58,10 @@
             </ul>
         </div>
         <div class="content-image">
-            <img src="Projects/Employee Attrition/1- Attraction & Satisfaction Rates.png" alt="Project visual">
+            <img src="Projects/Employee Attrition/1- Attraction & Satisfaction Rates.png" 
+                 alt="Project visual"
+                 class="project-clickable"
+                 onclick="openProjectImage(this.src)">
         </div>
     </section>
 
@@ -79,7 +82,10 @@
             </ul>
         </div>
         <div class="content-image">
-            <img src="Projects/Employee Attrition/2- Demographics.png" alt="Project visual">
+            <img src="Projects/Employee Attrition/2- Demographics.png" 
+                 alt="Project visual"
+                 class="project-clickable"
+                 onclick="openProjectImage(this.src)">
         </div>
     </section>
 
@@ -98,7 +104,10 @@
             </ul>
         </div>
         <div class="content-image">
-            <img src="Projects/Employee Attrition/3- Travel & Organization.png" alt="Project visual">
+            <img src="Projects/Employee Attrition/3- Travel & Organization.png" 
+                 alt="Project visual"
+                 class="project-clickable"
+                 onclick="openProjectImage(this.src)">
         </div>
     </section>
 
@@ -116,7 +125,10 @@
             </ul>
         </div>
         <div class="content-image">
-            <img src="Projects/Employee Attrition/4- Time Spent in Company.png" alt="Project visual">
+            <img src="Projects/Employee Attrition/4- Time Spent in Company.png" 
+                 alt="Project visual"
+                 class="project-clickable"
+                 onclick="openProjectImage(this.src)">
         </div>
     </section>
 
@@ -136,7 +148,10 @@
             </ul>
         </div>
         <div class="content-image">
-            <img src="Projects/Employee Attrition/5- Compensation & Rates.png" alt="Project visual">
+            <img src="Projects/Employee Attrition/5- Compensation & Rates.png" 
+                 alt="Project visual"
+                 class="project-clickable"
+                 onclick="openProjectImage(this.src)">
         </div>
     </section>
 
@@ -155,7 +170,10 @@
             </ul>
         </div>
         <div class="content-image">
-            <img src="Projects/Employee Attrition/6- Other Metrics.png" alt="Project visual">
+            <img src="Projects/Employee Attrition/6- Other Metrics.png" 
+                 alt="Project visual"
+                 class="project-clickable"
+                 onclick="openProjectImage(this.src)">
         </div>
     </section>
 
@@ -168,7 +186,10 @@
             </p>
         </div>
         <div class="content-image">
-            <img src="Projects/Employee Attrition/7- Data Set.png" alt="Project visual">
+            <img src="Projects/Employee Attrition/7- Data Set.png" 
+                 alt="Project visual"
+                 class="project-clickable"
+                 onclick="openProjectImage(this.src)">
         </div>
     </section>
 
@@ -186,7 +207,12 @@
             </p>
         </div>
     </section>
-    <!-- Add more content sections as needed -->
-</body>
 
+    <!-- Image Modal -->
+    <div id="certModal" class="modal">
+        <span class="close-modal" onclick="closeProjectModal()">&times;</span>
+        <img id="certImage" class="modal-content">
+    </div>
+
+</body>
 </html>
