@@ -343,6 +343,16 @@ animate();
     <h2 class="section-heading" data-aos="fade-up" data-aos-delay="200">Certificates</h2>
     <div class="certificates-grid" data-aos="fade-up" data-aos-delay="400">
 
+      <div class="certificate-card" onclick="showCertificateSlideshow('DLNNKeras', 0)">
+        <img src="./Logos/IBM.png" alt="Data Analyst in Python Certificate" class="certificate-thumb">
+        <h3 class="certificate-title">Introduction to DeepLearning & Neural Networks with Keras<br><small>IBM - February, 2025</small><small>10 Hours</small></h3>
+      </div>
+
+      <div class="certificate-card" onclick="showCertificateSlideshow('MLPython', 0)">
+        <img src="./Logos/IBM.png" alt="Data Analyst in Python Certificate" class="certificate-thumb">
+        <h3 class="certificate-title">Machine Learning in Python<br><small>IBM - January, 2025</small><small>20 Hours</small></h3>
+      </div>
+
       <div class="certificate-card" onclick="showCertificateSlideshow('MLSpecialization', 0)">
         <img src="./Logos/DeepLearning.AI.png" alt="Data Analyst in Python Certificate" class="certificate-thumb">
         <h3 class="certificate-title">Machine Learning Specialization<br><small>DeepLearning.AI - December, 2025</small><small>90 Hours</small></h3>
@@ -389,6 +399,22 @@ animate();
 <!-- Replace the existing certificate script with this updated version -->
 <script>
 const certificateData = {
+
+    MLPython: {
+        name: 'Machine Learning in Python',
+        images: [
+            './Certificates/ML with Python.png'
+
+        ]
+    },
+
+    DLNNKeras: {
+        name: 'Introduction to DeepLearning & Neural Networks with Keras',
+        images: [
+            './Certificates/intro to DL & NN with Keras.png'
+
+        ]
+    },
 
     MLSpecialization: {
         name: 'Machine Learning Specialization',
