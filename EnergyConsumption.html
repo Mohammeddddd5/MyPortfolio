@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Energy Consumption Forecasting System - PJM Interconnection</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="Projects.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
+</head>
+<body>
+    <!-- Header -->
+    <canvas id="network-bg"></canvas>
+    <script src="Projects.js"></script>
+   <header>
+        <div class="nav-container">
+        <h1 class="logo">Mohammed Yasser</h1>
+        <nav class="nav-links">
+            <a href="index.html">Back to Portfolio</a>
+        </nav>
+        </div>
+    </header>
+
+    <!-- Project Header -->
+    <section class="project-header">
+        <h1 class="project-title">Energy Consumption Forecasting System - PJM Interconnection</h1>
+        <p class="project-overview">
+            <b> Project Overview: </b> This project focuses on developing a machine learning-based forecasting system to predict energy consumption patterns using the PJM 
+                Interconnection dataset, which contains historical energy consumption data from late 90s till August 2018 for PJM and its member utilities, PJM is a regional 
+                transmission organization in the United States. The goal is to create an accurate and reliable model that can assist in optimizing energy distribution, 
+                managing demand, and improving grid stability.
+                <br>
+            <br>
+            <b>Tools Used:</b> Python, Pandas, NumPy, Matplotlib, Seaborn, Scikit-learn, XGBoost, Streamlit
+        </p>
+    </section>
+    <div class="section-divider">
+        <span class="line"></span>
+        <h1>Problem Foundation & Dataset Overview</h1>
+        <span class="line"></span>
+    </div>
+
+    <!-- Problem Description & Proposed Solution -->
+    <section class="project-header">
+        <h1 style="font-size: 36px">Problem Description & Proposed Solution</h1>
+        <br>
+        <p class="project-overview">
+                <b>Problem Description:</b> PJM Interconnection faces challenges in accurately forecasting energy consumption due to the complex and dynamic 
+                nature of energy demand, influenced mainly by the time of the year & company policies. Inaccurate forecasts can lead to inefficient energy distribution, 
+                increased operational costs, and potential grid instability. The project aims to address these challenges by leveraging machine learning techniques to 
+                analyze historical energy consumption data and identify patterns that can improve forecasting accuracy.
+                <br><br>
+                <b>Proposed Solution:</b> Our solution was to develop a machine learning model that can predict energy consumption patterns based on historical data. 
+                We performed the data science project lifecycle: extensive data exploration & preprocessing to clean the dataset, handle missing values, and engineer relevant features.
+            <br>
+        </p>
+    </section>
+    <section class="project-header">
+        <h1 style="font-size: 36px">DataSet Overview</h1>
+        <br>
+
+        <div class="project-overview">
+            Used the hourly energy consumption data from the PJM Interconnection dataset, which includes multiple tables categorized into two main groups:<br><br>
+
+            <b>Companies Consumption</b> 9 tables containing hourly energy consumption data for different companies and regions within the PJM Interconnection. 
+            This data is crucial for understanding historical consumption patterns and training the forecasting model.<br><br>
+
+            <b>PJM East & West Consumptions:</b> 3 tables containing PJM's consumption data for 1998 till it was split into east and west, the other 2 tables 
+            contain the consumption data for the east and west regions after the split and untill august 2018, this data is essential for analyzing regional 
+            consumption trends and improving model accuracy.
+        </div>
+    </section>
+
+    <!-- Project Development Methodologies -->
+    <div class="section-divider">
+        <span class="line"></span>
+        <h1>Milestone 1: Data Exploration & Preprocessing</h1>
+        <span class="line"></span>
+    </div>
+    <section class="project-header">
+        <h1 style="font-size: 36px">1. Data Cleaning & Preprocessing</h1>
+        <br>
+        <div class="project-overview">
+            After exploring datasets structure, feature types, distributions, companies relations & date ranges, 
+            we performed data cleaning and preprocessing to ensure the dataset was ready for analysis and modeling. 
+            This involved several key steps:
+            <br><br>
+            <b>Handling Companies Interceptions:</b> two of the companies in the dataset had some key patterns that made them
+            alike, so after investegating the data, we found out that they were actually the same company but with different names, 
+            so we merged them together to avoid confusion and improve model performance.<br><br>
+            <b>Creating 2 new structured datasets:</b> we created a unified dataset that combines all the relevant tables and features,
+            and another dataset that focuses on the PJM east and west consumptions, this allowed us to have a more comprehensive view of the data and
+            analyze regional consumption patterns separately.<br><br>
+        </div>
+    </section>
+    
+    <section class="project-header">
+        <h1 style="font-size: 36px">2. Exploratory Data Analysis (EDA)</h1>
+        <br>
+        <div class="project-overview">
+            After cleaning the dataset, EDA steps were performed to understand the timeseries data,
+            detect trends, and extract meaningful insights, the key insights extracted were:
+            <ul class="project-overview-list">
+                <li>American Electric Power was the largest consumer in the dataset, averaging 15.5K MW per hour.</li>
+                <li>PJM East has much higher average consumption than PJM West.</li>
+                <li>PJM East and West had distinct consumption patterns, with PJM West showing higher variability.</li>
+                <li>Energy Consumption annual peaks are usually during June, August & January, while showing lower demand in April, May and October.</li>
+                <li>Energy Consumption daily peaks are usually at night (7 PM - 11 PM) and at lowest after midnight (1 AM - 6 AM).</li>
+            </ul>
+            Below are the visualizations from the EDA process:
+        </div>
+
+        <script>
+            initSlideshow('eda', [
+                './Projects/Energy Consumption/Screenshot_0.png',
+                './Projects/Energy Consumption/Screenshot_1.png',
+                './Projects/Energy Consumption/Screenshot_2.png',
+                './Projects/Energy Consumption/Screenshot_3.png',
+                './Projects/Energy Consumption/Screenshot_4.png',
+                './Projects/Energy Consumption/Screenshot_5.png',
+                './Projects/Energy Consumption/Screenshot_6.png',
+                './Projects/Energy Consumption/Screenshot_7.png',
+                './Projects/Energy Consumption/Screenshot_8.png',
+                './Projects/Energy Consumption/Screenshot_9.png',
+                './Projects/Energy Consumption/Screenshot_10.png',
+                './Projects/Energy Consumption/Screenshot_11.png',
+                './Projects/Energy Consumption/Screenshot_12.png',
+            ]);
+        </script>
+
+        <div class="slideshow-section">
+            <div class="slideshow-container">
+                <button class="slideshow-nav prev" onclick="changeSlide('eda', -1)">&#10094;</button>
+                <div class="slideshow-image-wrapper">
+                    <img id="slideshow-image-eda" src="./Projects/Energy Consumption/Screenshot_0.png"
+                        alt="EDA Visualization" onclick="openSlideshowModal('eda')">
+                    <div class="slideshow-controls">
+                        <div class="slideshow-dots">
+                            <span class="dot-eda dot active" onclick="currentSlide('eda', 1)"></span>
+                            <span class="dot-eda dot" onclick="currentSlide('eda', 2)"></span>
+                            <span class="dot-eda dot" onclick="currentSlide('eda', 3)"></span>
+                            <span class="dot-eda dot" onclick="currentSlide('eda', 4)"></span>
+                            <span class="dot-eda dot" onclick="currentSlide('eda', 5)"></span>
+                            <span class="dot-eda dot" onclick="currentSlide('eda', 6)"></span>
+                            <span class="dot-eda dot" onclick="currentSlide('eda', 7)"></span>
+                            <span class="dot-eda dot" onclick="currentSlide('eda', 8)"></span>
+                            <span class="dot-eda dot" onclick="currentSlide('eda', 9)"></span>
+                            <span class="dot-eda dot" onclick="currentSlide('eda', 10)"></span>
+                            <span class="dot-eda dot" onclick="currentSlide('eda', 11)"></span>
+                            <span class="dot-eda dot" onclick="currentSlide('eda', 12)"></span>
+                            <span class="dot-eda dot" onclick="currentSlide('eda', 13)"></span>
+                        </div>
+                        <button class="zoom-btn" onclick="openSlideshowModal('eda')">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="11" cy="11" r="8"></circle>
+                                <path d="m21 21-4.35-4.35"></path>
+                                <line x1="11" y1="8" x2="11" y2="14"></line>
+                                <line x1="8" y1="11" x2="14" y2="11"></line>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+                <button class="slideshow-nav next" onclick="changeSlide('eda', 1)">&#10095;</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Shared Slideshow Modal (one is enough for the whole page) -->
+    <div id="slideshowModal" class="modal">
+        <span class="close-modal" onclick="closeSlideshowModal()">&times;</span>
+        <img id="slideshowModalImage" class="modal-content">
+    </div>
+
+    <!-- Image Modal for single project images -->
+    <div id="certModal" class="modal">
+        <span class="close-modal" onclick="closeProjectModal()">&times;</span>
+        <img id="certImage" class="modal-content">
+    </div>
+
+    <!-- Slideshow Modal -->
+    <div id="slideshowModal" class="modal">
+        <span class="close-modal" onclick="closeSlideshowModal()">&times;</span>
+        <img id="slideshowModalImage" class="modal-content">
+    </div>
+
+    <!-- Image Modal for other images -->
+    <div id="certModal" class="modal">
+        <span class="close-modal" onclick="closeProjectModal()">&times;</span>
+        <img id="certImage" class="modal-content">
+    </div>
+
+    <section class="project-header">
+        <h1 style="font-size: 36px">3. Data Preparation & Feature Engineering</h1>
+        <br>
+        <div class="project-overview">
+            The most significant part of this project was feature engineering, since the dataset was a timeseries,
+            we had to create new features that capture the temporal patterns in the data that would help the model learn better,
+            after that, we had to prepare the data for modeling:
+            <br><br>
+            <b>Feature Engineering:</b>
+            <ul class="project-overview-list">
+                <li>Transformed Datetime feature into a set of date features (year, month, day, etc.)</li>
+                <li>Created lag features to capture temporal dependencies</li>
+                <li>Created rolling window features (rolling mean & std) to capture trends and seasonality</li>
+                <li>Created Exponential Moving Average (for 24-hours) feature</li>
+                <li>Creating those features made the dataset include some nulls for early dates values, they were removed since we cant impute them</li>
+            </ul>
+            <b>Data Preparation:</b>
+            <ul class="project-overview-list">
+                <li>Ensured data quality, consistency and data types</li>
+                <li>Splitted the data, where the last 2 years of consumption (August 2016 to August 2018) were used for testing (around a 82/18 split)</li>
+                <li>Applied log transformation to the target variable (energy consumption) due to the difference in scale of consumption between companies,
+                    to stabilize variance and improve model performance</li>
+            </ul>
+        </div>
+
+        <script>
+            initSlideshow('features', [
+                './Projects/Energy Consumption 2/Screenshot_0.png',
+                './Projects/Energy Consumption 2/Screenshot_1.png',
+            ]);
+        </script>
+
+        <div class="slideshow-section">
+            <div class="slideshow-container">
+                <button class="slideshow-nav prev" onclick="changeSlide('features', -1)">&#10094;</button>
+                <div class="slideshow-image-wrapper">
+                    <img id="slideshow-image-features" src="./Projects/Energy Consumption 2/Screenshot_0.png"
+                        alt="Feature Engineering Visualization" onclick="openSlideshowModal('features')">
+                    <div class="slideshow-controls">
+                        <div class="slideshow-dots">
+                            <span class="dot-features dot active" onclick="currentSlide('features', 1)"></span>
+                            <span class="dot-features dot" onclick="currentSlide('features', 2)"></span>
+                        </div>
+                        <button class="zoom-btn" onclick="openSlideshowModal('features')">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="11" cy="11" r="8"></circle>
+                                <path d="m21 21-4.35-4.35"></path>
+                                <line x1="11" y1="8" x2="11" y2="14"></line>
+                                <line x1="8" y1="11" x2="14" y2="11"></line>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+                <button class="slideshow-nav next" onclick="changeSlide('features', 1)">&#10095;</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Data Modeling Section -->
+    <div class="section-divider">
+        <span class="line"></span>
+        <h1>Milestone 2: Data Modeling</h1>
+        <span class="line"></span>
+    </div>
+    <section class="project-header">
+        <h1 style="font-size: 36px">Data Modeling Overview</h1>
+        <br>
+        <div class="project-overview">
+            After preparing the data and ensuring its quality & consistency, XGBoost was selected as the primary modeling algorithm due to its efficiency and superior performance with structured data.
+            the model was trained on the training set and evaluated on the test set using key performance metrics: Mean Squared Error (MSE) and R-squared (R²) to assess its accuracy and reliability 
+            in forecasting energy consumption patterns. and the results were surprisingly good, the model achieved:
+            <li><b>MSE:</b> 0.00027 (Which is extremely low due to the log transformation applied to the target variable, it indicates that the model's predictions are very close to the actual values in terms of their logarithmic scale)</li> 
+            <li><b>R² Score:</b> 0.99968</li>
+            indicating that it can explain ~99.97% of the variance in energy consumption, which is a very strong result for a forecasting model.
+        </div>
+    </section>
+
+    <!-- Machine Learning Model Section -->
+    <section class="project-header">
+        <h1 style="font-size: 36px">XGBoost Model Training</h1>
+        <br>
+
+        <!-- Jupyter Cell 1: Model Configuration -->
+        <div class="jupyter-cell">
+            <div class="cell-input">
+                <div class="prompt">In [1]:</div>
+                <div class="code-area">
+                    <pre><code class="language-python">model = XGBRegressor(
+        random_state=42,
+        verbosity=2,
+        n_jobs=1
+    )</code></pre>
+                </div>
+            </div>
+        </div>
+
+        <!-- Jupyter Cell 2: Hyperparameter Tuning -->
+        <div class="jupyter-cell">
+            <div class="cell-input">
+                <div class="prompt">In [2]:</div>
+                <div class="code-area">
+                    <pre><code class="language-python">parameters = {
+        "n_estimators": [100, 200],
+        "max_depth": [4, 6, 8],
+        "learning_rate": [0.01, 0.1, 0.2],
+        "subsample": [0.8, 0.9, 1],
+        "colsample_bytree": [0.7, 0.8]
+    }
+
+    kf = KFold(n_splits=5, shuffle=True, random_state=42)
+
+    random_search = RandomizedSearchCV(
+        estimator=model,
+        param_distributions=parameters,
+        n_iter=50,
+        scoring='neg_mean_squared_error',
+        cv=3,
+        verbose=3,
+        n_jobs=1,
+        random_state=42
+    )
+
+    random_search.fit(X_train, y_train)</code></pre>
+                </div>
+            </div>
+        </div>
+
+        <!-- Jupyter Cell 3: Evaluation -->
+        <div class="jupyter-cell">
+            <div class="cell-input">
+                <div class="prompt">In [3]:</div>
+                <div class="code-area">
+                    <pre><code class="language-python">y_pred = model.predict(X_test)
+    mse = MSE(y_test, y_pred)
+    r2 = R2(y_test, y_pred)
+    print(f"MSE: {mse}\nR2: {r2}")</code></pre>
+                </div>
+            </div>
+            <div class="cell-output">
+                <div class="prompt"></div>
+                <div class="output-area">
+                    <pre>MSE: 0.00027028899812799837
+    R2: 0.9996835680266996</pre>
+                </div>
+            </div>
+        </div>
+
+        <!-- Predicted vs Actual Chart -->
+        <div class="project-overview" style="margin-top: 1.5rem;">
+            Below is the Predicted vs Actual Energy Consumption per Company plot over the test period (August 2016 – August 2018),
+            showing how closely the model's predictions follow the actual consumption values across all companies:
+        </div>
+        <div style="text-align: center; margin-top: 1.5rem;">
+            <img src="./Projects/Energy Consumption/predicted vs actual.png"
+                alt="Predicted vs Actual Energy Consumption per Company"
+                style="max-width: 100%; border-radius: 8px; cursor: pointer;"
+                onclick="openProjectImage(this.src)">
+        </div>
+    </section>
+
+    <div class="section-divider">
+        <span class="line"></span>
+        <h1>Milestone 3: Model Deployment</h1>
+        <span class="line"></span>
+    </div>
+
+    <section class="project-header">
+        <h1 style="font-size: 36px">Forecasting System Application</h1>
+        <br>
+        <div class="project-overview">
+            To demonstrate the practical application of the developed forecasting model, a Streamlit web application was created.
+            The application has 2 main sections:
+
+            <li><b>Predict using Test Data:</b> In the first section, users can 
+            select a company, or all companies (Combined/Separated) and a date range within the test period (August 2016 – August 2018) 
+            to see the model's predictions compared to actual consumption values, allowing users to evaluate the model's performance on unseen data and understand 
+            its forecasting capabilities.</li>
+ 
+            <li><b>Predict using Custom Data:</b> In the second section, users can input custom data for a specific company (Or all combined) and a date range to 
+                generate forecasts for dates beyond the test period (August 2018 – December 2026), Although the system will allow you to predict consumption values for 
+                current dates like 2025 or 2026, its not recommended to use it for those dates due to potential inaccuracies, as the model's performance may degrade for 
+                distant future dates.</li>
+            <br>
+
+            Feel free to explore the application and test the model's forecasting capabilities! to go to the website, 
+            <a href="https://energyforecasting.streamlit.app/" target="_blank" style="color: #004e75; font-weight: bold; text-decoration: underline;">Click Here</a><br>
+        </div>
+    </section>
+    <br><br>
+</body>
+</html>
