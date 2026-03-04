@@ -41,7 +41,7 @@ function initParticles(num) {
 function animate() {
   ctx.fillStyle = "#ffffff";
   ctx.fillRect(0, 0, canvas.width, canvas.height);
-  
+
   particles.forEach(p => {
     p.update();
     p.draw();
@@ -65,10 +65,10 @@ function animate() {
   requestAnimationFrame(animate);
 }
 
+// ── Modal for single project images ──────────────────────────────────────────
 function openProjectImage(imgSrc) {
   const modal = document.getElementById("certModal");
   const modalImg = document.getElementById("certImage");
-  
   if (modal && modalImg) {
     modal.style.display = "block";
     modalImg.src = imgSrc;
@@ -77,195 +77,106 @@ function openProjectImage(imgSrc) {
 
 function closeProjectModal() {
   const modal = document.getElementById("certModal");
-  if (modal) {
-    modal.style.display = "none";
+  if (modal) modal.style.display = "none";
+}
+
+// ── Generic named slideshow system ───────────────────────────────────────────
+const slideshows = {};
+
+function initSlideshow(name, images) {
+  slideshows[name] = {
+    currentIndex: 1,
+    images: images,
+    total: images.length
+  };
+}
+
+function changeSlide(name, direction) {
+  const s = slideshows[name];
+  if (!s) return;
+  s.currentIndex += direction;
+  if (s.currentIndex > s.total) s.currentIndex = 1;
+  if (s.currentIndex < 1) s.currentIndex = s.total;
+  showSlide(name, s.currentIndex);
+}
+
+function currentSlide(name, n) {
+  if (!slideshows[name]) return;
+  slideshows[name].currentIndex = n;
+  showSlide(name, n);
+}
+
+function showSlide(name, n) {
+  const img = document.getElementById('slideshow-image-' + name);
+  const dots = document.querySelectorAll('.dot-' + name);
+  const s = slideshows[name];
+  if (!s || !img || !s.images[n - 1]) return;
+
+  img.src = s.images[n - 1];
+  dots.forEach((dot, i) => dot.classList.toggle('active', i === n - 1));
+}
+
+function openSlideshowModal(name) {
+  const modal = document.getElementById('slideshowModal');
+  const modalImg = document.getElementById('slideshowModalImage');
+  const currentImg = document.getElementById('slideshow-image-' + name);
+  if (modal && modalImg && currentImg) {
+    modal.style.display = 'block';
+    modalImg.src = currentImg.src;
   }
 }
 
-// Slideshow functionality
-let currentSlideIndex = 1;
-const totalSlides = 9;
-const slideImages = [
-    './Projects/Loan Defaulter/Screenshot_0.png',
-    './Projects/Loan Defaulter/Screenshot_1.png',
-    './Projects/Loan Defaulter/Screenshot_2.png',
-    './Projects/Loan Defaulter/Screenshot_3.png',
-    './Projects/Loan Defaulter/Screenshot_4.png',
-    './Projects/Loan Defaulter/Screenshot_5.png',
-    './Projects/Loan Defaulter/Screenshot_6.png',
-    './Projects/Loan Defaulter/Screenshot_7.png',
-    './Projects/Loan Defaulter/Screenshot_8.png'
-];
-
-function changeSlide(direction) {
-    currentSlideIndex += direction;
-    
-    if (currentSlideIndex > totalSlides) {
-        currentSlideIndex = 1;
-    }
-    if (currentSlideIndex < 1) {
-        currentSlideIndex = totalSlides;
-    }
-    
-    showSlide(currentSlideIndex);
-}
-
-function currentSlide(n) {
-    currentSlideIndex = n;
-    showSlide(currentSlideIndex);
-}
-
-function showSlide(n) {
-    const img = document.getElementById('slideshow-image');
-    const dots = document.getElementsByClassName('dot');
-    
-    if (img && slideImages[n - 1]) {
-        img.src = slideImages[n - 1];
-        
-        // Update active dot
-        for (let i = 0; i < dots.length; i++) {
-            dots[i].classList.remove('active');
-        }
-        if (dots[n - 1]) {
-            dots[n - 1].classList.add('active');
-        }
-    }
-}
-
-function openSlideshowModal() {
-    const modal = document.getElementById('slideshowModal');
-    const modalImg = document.getElementById('slideshowModalImage');
-    const currentImg = document.getElementById('slideshow-image');
-    
-    if (modal && modalImg && currentImg) {
-        modal.style.display = 'block';
-        modalImg.src = currentImg.src;
-    }
-}
-
 function closeSlideshowModal() {
-    const modal = document.getElementById('slideshowModal');
-    if (modal) {
-        modal.style.display = 'none';
-    }
+  const modal = document.getElementById('slideshowModal');
+  if (modal) modal.style.display = 'none';
 }
 
-// Close modals when clicking outside - Handle both modals
-window.addEventListener('click', function(event) {
-    // Handle certModal (for project images)
-    const certModal = document.getElementById("certModal");
-    if (certModal && event.target === certModal) {
-        closeProjectModal();
-    }
-    
-    // Handle slideshowModal (for slideshow)
-    const slideshowModal = document.getElementById('slideshowModal');
-    if (slideshowModal && event.target === slideshowModal) {
-        closeSlideshowModal();
-    }
-});
-
-// Keyboard navigation for slideshow
-document.addEventListener('keydown', function(e) {
-    const modal = document.getElementById('slideshowModal');
-    if (modal && modal.style.display === 'block') {
-        if (e.key === 'Escape') {
-            closeSlideshowModal();
-        }
-    } else {
-        // Only navigate slideshow with arrows if modal is not open
-        const slideImg = document.getElementById('slideshow-image');
-        if (slideImg) {
-            if (e.key === 'ArrowLeft') {
-                changeSlide(-1);
-            } else if (e.key === 'ArrowRight') {
-                changeSlide(1);
-            }
-        }
-    }
-});
-
-// Streamlit Slideshow functionality
-let currentStreamlitSlideIndex = 1;
-const totalStreamlitSlides = 3;
-const streamlitSlideImages = [
-    './Projects/Loan Defaulter/Streamlit_1.png',
-    './Projects/Loan Defaulter/Streamlit_2.png',
-    './Projects/Loan Defaulter/Streamlit_3.png'
-];
+// ── Streamlit slideshow (Loan Defaulter page only) ────────────────────────────
+function initStreamlitSlideshow(images) {
+  initSlideshow('streamlit', images);
+}
 
 function changeStreamlitSlide(direction) {
-    currentStreamlitSlideIndex += direction;
-    
-    if (currentStreamlitSlideIndex > totalStreamlitSlides) {
-        currentStreamlitSlideIndex = 1;
-    }
-    if (currentStreamlitSlideIndex < 1) {
-        currentStreamlitSlideIndex = totalStreamlitSlides;
-    }
-    
-    showStreamlitSlide(currentStreamlitSlideIndex);
+  changeSlide('streamlit', direction);
 }
 
 function currentStreamlitSlide(n) {
-    currentStreamlitSlideIndex = n;
-    showStreamlitSlide(currentStreamlitSlideIndex);
-}
-
-function showStreamlitSlide(n) {
-    const img = document.getElementById('streamlit-slideshow-image');
-    const dots = document.getElementsByClassName('streamlit-dot');
-    
-    if (img && streamlitSlideImages[n - 1]) {
-        img.src = streamlitSlideImages[n - 1];
-        
-        // Update active dot
-        for (let i = 0; i < dots.length; i++) {
-            dots[i].classList.remove('active');
-        }
-        if (dots[n - 1]) {
-            dots[n - 1].classList.add('active');
-        }
-    }
+  currentSlide('streamlit', n);
 }
 
 function openStreamlitModal() {
-    const modal = document.getElementById('streamlitModal');
-    const modalImg = document.getElementById('streamlitModalImage');
-    const currentImg = document.getElementById('streamlit-slideshow-image');
-    
-    if (modal && modalImg && currentImg) {
-        modal.style.display = 'block';
-        modalImg.src = currentImg.src;
-    }
+  const modal = document.getElementById('streamlitModal');
+  const modalImg = document.getElementById('streamlitModalImage');
+  const currentImg = document.getElementById('slideshow-image-streamlit');
+  if (modal && modalImg && currentImg) {
+    modal.style.display = 'block';
+    modalImg.src = currentImg.src;
+  }
 }
 
 function closeStreamlitModal() {
-    const modal = document.getElementById('streamlitModal');
-    if (modal) {
-        modal.style.display = 'none';
-    }
+  const modal = document.getElementById('streamlitModal');
+  if (modal) modal.style.display = 'none';
 }
 
-// Update the window click event listener to handle all modals
+// ── Close modals on outside click ────────────────────────────────────────────
 window.addEventListener('click', function(event) {
-    // Handle certModal (for project images)
-    const certModal = document.getElementById("certModal");
-    if (certModal && event.target === certModal) {
-        closeProjectModal();
-    }
-    
-    // Handle slideshowModal (for EDA slideshow)
-    const slideshowModal = document.getElementById('slideshowModal');
-    if (slideshowModal && event.target === slideshowModal) {
-        closeSlideshowModal();
-    }
-    
-    // Handle streamlitModal (for Streamlit slideshow)
-    const streamlitModal = document.getElementById('streamlitModal');
-    if (streamlitModal && event.target === streamlitModal) {
-        closeStreamlitModal();
-    }
+  const certModal = document.getElementById("certModal");
+  if (certModal && event.target === certModal) closeProjectModal();
+
+  const slideshowModal = document.getElementById('slideshowModal');
+  if (slideshowModal && event.target === slideshowModal) closeSlideshowModal();
+
+  const streamlitModal = document.getElementById('streamlitModal');
+  if (streamlitModal && event.target === streamlitModal) closeStreamlitModal();
+});
+
+// ── Keyboard navigation ───────────────────────────────────────────────────────
+document.addEventListener('keydown', function(e) {
+  const modal = document.getElementById('slideshowModal');
+  if (modal && modal.style.display === 'block') {
+    if (e.key === 'Escape') closeSlideshowModal();
+  }
 });
 
 initParticles(100);
