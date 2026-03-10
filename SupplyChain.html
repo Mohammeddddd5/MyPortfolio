@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Supply Chain Latency & Risk Prediction</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="Projects.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
+</head>
+<body>
+    <!-- Header -->
+    <canvas id="network-bg"></canvas>
+    <script src="Projects.js"></script>
+   <header>
+        <div class="nav-container">
+        <h1 class="logo">Mohammed Yasser</h1>
+        <nav class="nav-links">
+            <a href="index.html">Back to Portfolio</a>
+        </nav>
+        </div>
+    </header>
+
+    <!-- Project Header -->
+    <section class="project-header">
+        <h1 class="project-title">Supply Chain Latency & Risk Prediction</h1>
+        <p class="project-overview">
+            <b> Project Overview: </b> This project develops an end-to-end machine learning system to predict shipment delivery 
+            outcomes across a global supply chain network. Using the DataCo Smart Supply Chain dataset (180K+ orders), the system classifies 
+            each order into one of four outcomes: Advance Shipping, On Time, Late Delivery, or Canceled.<br>
+            The pipeline covers the full data science lifecycle: from data cleaning and exploratory analysis, through unsupervised learning 
+            (PCA, UMAP, KMeans clustering), to supervised modeling with LightGBM and XGBoost.
+            <br><br>
+            <b>Tools Used:</b> Python, Pandas, NumPy, Matplotlib, Seaborn, Scikit-learn, XGBoost, LightGBM, Imblearn, Streamlit
+        </p>
+    </section>
+    <div class="section-divider">
+        <span class="line"></span>
+        <h1>Problem Foundation & Dataset Overview</h1>
+        <span class="line"></span>
+    </div>
+
+    <!-- Problem Description & Proposed Solution -->
+    <section class="project-header">
+        <h1 style="font-size: 36px">Problem Description & Proposed Solution</h1>
+        <br>
+        <p class="project-overview">
+                <b>Problem Description:</b> Late and canceled shipments are a silent killer in supply chains —
+                they cause stockouts, unhappy customers, and wasted resources. Most logistics systems only
+                flag problems after they happen. This project flips that by predicting delivery outcomes
+                before shipment, giving teams a chance to act early before things go wrong.
+                <br><br>
+                <b>Proposed Solution:</b> In this project, we focus on
+                creating a predictive model that tries to predict whether a trip will:
+                <ul class="project-overview-list">
+                    <li>Arrive Earlier than Expected</li>
+                    <li>Arrive Later than Expected</li>
+                    <li>Arrive On Time</li>
+                    <li>Cancelled (Challenging to Predict)</li>
+                </ul>
+            <br>
+        </p>
+    </section>
+    <section class="project-header">
+        <h1 style="font-size: 36px">DataSet Overview</h1>
+        <br>
+
+        <div class="project-overview">
+            The DataCo Supply Chain Dataset have been used for this project, the dataset included 3 tables:<br><br>
+
+            <b>Supply Chain Trips Data:</b> The main table in the project, includes 180K records and 53 features, each record is about the summary of a delivery trip
+            such as estimated delivery time (in days), delivery trip start time, where is the trip starting from & going to, our target feature (Delivery Status) and more<br><br>
+
+            <b>Features Descriptions:</b> A table including the explanation of each feature in the main dataset, this table was only used for the business understanding phase<br><br>
+            <b>Tokenized Access Logs:</b> This table included redundant & non relevant features about each transaction, because the features of this table were not any useful,
+            it was not used
+        </div>
+    </section>
+
+    <!-- Project Development Methodologies -->
+    <div class="section-divider">
+        <span class="line"></span>
+        <h1>Milestone 1: Data Exploration & Preprocessing</h1>
+        <span class="line"></span>
+    </div>
+    <section class="project-header">
+        <h1 style="font-size: 36px">1. Data Cleaning & Preprocessing</h1>
+        <br>
+        <div class="project-overview">
+            After inspecting the dataset for nulls, duplicates, and data types — none were found.
+            Cleaning focused on four areas:
+            <br><br>
+
+            <b>Removed PII & ID Features:</b> Customer identifiers, order/product IDs, and static
+            metadata (images, descriptions) were dropped as they carry no analytical value.
+            <br><br>
+
+            <b>Removed Leakage Features:</b> Days for shipping (real), Late_delivery_risk,
+            and Order Status were dropped — all three are only known after delivery,
+            making them illegal inputs for a prediction model.
+            <br><br>
+
+            <b>Removed Redundant Features:</b> Duplicate columns were identified and dropped —
+            profit, price, and sales columns each had an exact duplicate. Geographic columns
+            Order City and Order State were also removed since Order Region and
+            Country already capture that information.
+            <br><br>
+
+            <b>Handled Extreme Outliers:</b> Three filters removed impossible values —
+            discount above 450, benefit below -2,900, and sales above 550.
+            <br><br>
+
+            Dataset went from <b>180,519 rows × 53 columns</b> to <b>180,031 rows × 30 columns</b>.
+        </div>
+    </section>
+    
+    <section class="project-header">
+        <h1 style="font-size: 36px">2. Exploratory Data Analysis (EDA)</h1>
+        <br>
+        <div class="project-overview">
+            After cleaning the dataset, EDA steps were performed to understand the relationships between
+            the remaining 29 features & our target columns, alongside with the relation between numerical columns
+            to each others. Key insights included:
+            <ul class="project-overview-list">
+                <li>The majority of delivery trips were classified as Late Delivery, while only a small proportion of trips were cancelled,
+                    This means that target features are imbalanced & balancing techniques should be performed
+                </li>
+                <li>Despite being the slowest tier, Standard Class accounts for nearly all advance shipments;
+                suggesting sellers set conservative delivery windows for standard orders, making early arrival easy</li>
+                <li>High-volume cities like Los Angeles and New York show moderate late delivery rates (~50-60%),
+                while several low-volume cities across Texas and the Midwest show alarmingly high rates of 70-80%: 
+                a pattern that traditional volume-based monitoring would completely overlook</li>
+                <li>Late deliveries consistently dominate across all time dimensions: by year, month, day, and hour.
+                Maintaining the highest count at every point, confirming it's a systemic issue rather than a seasonal one</li>
+                <li>The sharp drop in all shipment counts toward 2018 is a data collection artifact, not a real business trend:
+                2018 is severely underrepresented in the dataset and should be interpreted with caution</li>
+                
+            </ul>
+            Below are the visualizations from the EDA process:
+        </div>
+
+        <script>
+            initSlideshow('eda', [
+                './Projects/Supply Chain/Screenshot_1.png',
+                './Projects/Supply Chain/Screenshot_0.png',
+                './Projects/Supply Chain/Screenshot_2.png',
+                './Projects/Supply Chain/Screenshot_3.png',
+                './Projects/Supply Chain/Screenshot_4.png',
+                './Projects/Supply Chain/Screenshot_5.png',
+                './Projects/Supply Chain/Screenshot_6.png',
+                './Projects/Supply Chain/Screenshot_7.png',
+                './Projects/Supply Chain/Screenshot_8.png',
+                './Projects/Supply Chain/Screenshot_9.png',
+            ]);
+        </script>
+
+        <div class="slideshow-section">
+            <div class="slideshow-container">
+                <button class="slideshow-nav prev" onclick="changeSlide('eda', -1)">&#10094;</button>
+                <div class="slideshow-image-wrapper">
+                    <img id="slideshow-image-eda" src="./Projects/Supply Chain/Screenshot_1.png"
+                        alt="EDA Visualization" onclick="openSlideshowModal('eda')">
+                    <div class="slideshow-controls">
+                        <div class="slideshow-dots">
+                            <span class="dot-eda dot active" onclick="currentSlide('eda', 1)"></span>
+                            <span class="dot-eda dot" onclick="currentSlide('eda', 2)"></span>
+                            <span class="dot-eda dot" onclick="currentSlide('eda', 3)"></span>
+                            <span class="dot-eda dot" onclick="currentSlide('eda', 4)"></span>
+                            <span class="dot-eda dot" onclick="currentSlide('eda', 5)"></span>
+                            <span class="dot-eda dot" onclick="currentSlide('eda', 6)"></span>
+                            <span class="dot-eda dot" onclick="currentSlide('eda', 7)"></span>
+                            <span class="dot-eda dot" onclick="currentSlide('eda', 8)"></span>
+                            <span class="dot-eda dot" onclick="currentSlide('eda', 9)"></span>
+                            <span class="dot-eda dot" onclick="currentSlide('eda', 10)"></span>
+                        </div>
+                        <button class="zoom-btn" onclick="openSlideshowModal('eda')">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="11" cy="11" r="8"></circle>
+                                <path d="m21 21-4.35-4.35"></path>
+                                <line x1="11" y1="8" x2="11" y2="14"></line>
+                                <line x1="8" y1="11" x2="14" y2="11"></line>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+                <button class="slideshow-nav next" onclick="changeSlide('eda', 1)">&#10095;</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Slideshow Modal -->
+    <div id="slideshowModal" class="modal">
+        <span class="close-modal" onclick="closeSlideshowModal()">&times;</span>
+        <img id="slideshowModalImage" class="modal-content">
+    </div>
+
+    <!-- Image Modal for single project images -->
+    <div id="certModal" class="modal">
+        <span class="close-modal" onclick="closeProjectModal()">&times;</span>
+        <img id="certImage" class="modal-content">
+    </div>
+
+    <section class="project-header">
+        <h1 style="font-size: 36px">3. Feature Engineering & Unsupervised Learning</h1>
+        <br>
+        <div class="project-overview">
+
+            <b>Feature Engineering:</b> The shipping date was decomposed into month, day of week, and hour.
+            Two binary flags were created from high-signal categorical columns — Is_Transfer and Is_Standard_Class /
+            Is_Second_Class. Categorical columns were then encoded using Target Encoding for high-cardinality
+            features and One-Hot Encoding for the rest.<br><br>
+
+            <b>Unsupervised Learning:</b> Before supervised modeling, unsupervised techniques were
+            applied to explore the dataset's natural structure and validate whether the four delivery
+            outcomes form distinguishable patterns.
+            <br><br>
+            <b>PCA</b> reduced the feature space down to 40 components while retaining
+            <b>88.7%</b> of the variance, compressing the data for efficient UMAP processing.
+            <br><br>
+            <b>UMAP</b> projected the data into 2D, revealing that delivery outcomes form
+            partially separable regions — confirming that the features carry real predictive signal,
+            particularly Shipping Canceled which formed a tight isolated cluster.
+            <br><br>
+            <b>KMeans</b> (k=4) was overlaid on the UMAP projection to see how naturally forming
+            groups align with actual delivery labels, showing reasonable correspondence with the
+            true outcome distribution.
+            <br><br>
+
+        </div>
+
+        <script>
+            initSlideshow('features', [
+                './Projects/Supply Chain 2/Screenshot_0.png',
+                './Projects/Supply Chain 2/Screenshot_1.png',
+                './Projects/Supply Chain 2/Screenshot_2.png'
+            ]);
+        </script>
+
+        <div class="slideshow-section">
+            <div class="slideshow-container">
+                <button class="slideshow-nav prev" onclick="changeSlide('features', -1)">&#10094;</button>
+                <div class="slideshow-image-wrapper">
+                    <img id="slideshow-image-features" src="./Projects/Supply Chain 2/Screenshot_0.png"
+                        alt="Unsupervised Learning Visualization" onclick="openSlideshowModal('features')">
+                    <div class="slideshow-controls">
+                        <div class="slideshow-dots">
+                            <span class="dot-features dot active" onclick="currentSlide('features', 1)"></span>
+                            <span class="dot-features dot" onclick="currentSlide('features', 2)"></span>
+                            <span class="dot-features dot" onclick="currentSlide('features', 3)"></span>
+                        </div>
+                        <button class="zoom-btn" onclick="openSlideshowModal('features')">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="11" cy="11" r="8"></circle>
+                                <path d="m21 21-4.35-4.35"></path>
+                                <line x1="11" y1="8" x2="11" y2="14"></line>
+                                <line x1="8" y1="11" x2="14" y2="11"></line>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+                <button class="slideshow-nav next" onclick="changeSlide('features', 1)">&#10095;</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Data Modeling Section -->
+    <div class="section-divider">
+        <span class="line"></span>
+        <h1>Milestone 2: Data Modeling</h1> <!-- WE STOPPED HERE -->
+        <span class="line"></span>
+    </div>
+    <section class="project-header">
+        <h1 style="font-size: 36px">Data Modeling Overview</h1>
+        <br>
+        <div class="project-overview">
+            After preparing the data and ensuring its quality & consistency, LightGBM and XGBoost models were trained on the cleaned dataset.
+            But before modeling, the target column was imbalanced with the next counts:
+            <ul class="project-overview-list">
+                <li>Late Shipment: about 79K targets out of 144k training values belonged to this class</li>
+                <li>Advanced Shipment: 33.1K targets belonged to this class</li>
+                <li>Late Shipment: 25.7k targets belonged to this class</li>
+                <li>Shipment Canceled: Only 6.2k targets belonged to this class</li>
+            </ul>
+            So, Undersampling & SMOTE were applied to balance all target classes to be at 60K, then both models were trained
+        </div>
+    </section>
+
+
+<!-- LightGBM -->
+<section class="project-header">
+    <h1 style="font-size: 36px">1. LightGBM</h1>
+    <br>
+
+    <div class="project-overview">
+        The first model trained was LightGBM, using RandomizedSearchCV with 5-fold cross-validation
+        across 25 parameter combinations. Here is a snippet of the implementation:
+    </div>
+
+    <div class="jupyter-cell">
+        <div class="cell-input">
+            <div class="prompt">In [1]:</div>
+            <div class="code-area">
+                <pre><code class="language-python">lgbm_params = {
+    'n_estimators'     : [100, 200, 300],
+    'max_depth'        : [7, 10, 13, 16],
+    'learning_rate'    : [0.01, 0.1, 0.2],
+    'num_leaves'       : [31, 63, 127],
+    'subsample'        : [0.6, 0.8, 1.0],
+    'colsample_bytree' : [0.6, 0.8, 1.0],
+    'min_child_samples': [10, 20, 30],
+    'reg_alpha'        : [0, 0.1, 0.5],
+    'reg_lambda'       : [0, 0.1, 0.5],
+    'class_weight'     : ['balanced', None]
+}
+
+lgbm_search = RandomizedSearchCV(
+    estimator = LGBMClassifier(random_state=42, n_jobs=-1, verbose=-1),
+    param_distributions = lgbm_params,
+    n_iter       = 25,
+    scoring      = 'f1_macro',
+    cv           = 5,
+    random_state = 42,
+    n_jobs       = 1,
+    verbose      = 3
+)
+
+lgbm_search.fit(X_train_balanced, y_train_balanced)</code></pre>
+            </div>
+        </div>
+    </div>
+
+    <div class="jupyter-cell">
+        <div class="cell-input">
+            <div class="prompt">In [2]:</div>
+            <div class="code-area">
+                <pre><code class="language-python">lgbm_model = lgbm_search.best_estimator_
+y_pred = lgbm_model.predict(X_test)
+print(classification_report(y_test, y_pred))</code></pre>
+            </div>
+        </div>
+        <div class="cell-output">
+            <div class="prompt"></div>
+            <div class="output-area">
+                <pre>                  precision  recall  f1-score  support
+
+Advance shipping      0.58    0.70      0.64     8294
+Shipping on time      0.76    0.34      0.47     6420
+Late delivery         0.77    0.88      0.82    19746
+Shipping canceled     0.70    0.35      0.47     1547
+
+accuracy                               0.72    36007
+macro avg             0.70    0.57      0.60    36007
+weighted avg          0.72    0.72      0.70    36007</pre>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- XGBoost -->
+<section class="project-header">
+    <h1 style="font-size: 36px">2. XGBoost</h1>
+    <br>
+
+    <div class="project-overview">
+        The second model trained was XGBoost, using RandomizedSearchCV with 4-fold cross-validation
+        across 10 parameter combinations. Here is a snippet of the implementation:
+    </div>
+
+    <div class="jupyter-cell">
+        <div class="cell-input">
+            <div class="prompt">In [3]:</div>
+            <div class="code-area">
+                <pre><code class="language-python">xgb_params = {
+    'n_estimators'    : [300, 500, 700],
+    'max_depth'       : [7, 10, 13],
+    'learning_rate'   : [0.1, 0.15, 0.2],
+    'subsample'       : [0.7, 0.8, 0.9],
+    'colsample_bytree': [0.6, 0.8],
+    'min_child_weight': [1, 3, 5],
+    'gamma'           : [0, 0.1],
+    'reg_alpha'       : [0, 0.1],
+    'reg_lambda'      : [1, 1.5]
+}
+
+xgb_search = RandomizedSearchCV(
+    estimator = XGBClassifier(random_state=42, n_jobs=-1,
+                              eval_metric='mlogloss', verbosity=0),
+    param_distributions = xgb_params,
+    n_iter       = 10,
+    scoring      = 'f1_macro',
+    cv           = 4,
+    random_state = 42,
+    n_jobs       = 1,
+    verbose      = 3
+)
+
+xgb_search.fit(X_train_balanced, y_train_balanced)</code></pre>
+            </div>
+        </div>
+    </div>
+
+    <div class="jupyter-cell">
+        <div class="cell-input">
+            <div class="prompt">In [4]:</div>
+            <div class="code-area">
+                <pre><code class="language-python">best_xgb = xgb_search.best_estimator_
+y_pred = best_xgb.predict(X_test)
+print(classification_report(y_test, y_pred))
+print(accuracy_score(y_test, y_pred))</code></pre>
+            </div>
+        </div>
+        <div class="cell-output">
+            <div class="prompt"></div>
+            <div class="output-area">
+                <pre>                  precision  recall  f1-score  support
+
+Advance shipping      0.58    0.79      0.67     8294
+Shipping on time      0.73    0.46      0.57     6420
+Late delivery         0.83    0.83      0.83    19746
+Shipping canceled     0.70    0.42      0.53     1547
+
+accuracy                               0.74    36007
+macro avg             0.71    0.63      0.65    36007
+weighted avg          0.75    0.74      0.73    36007
+
+0.7371622184575222</pre>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Model Selection -->
+<section class="project-header">
+    <h1 style="font-size: 36px">3. Model Selection</h1>
+    <br>
+    <div class="project-overview">
+        After comparing both models across all metrics, XGBoost outperformed LightGBM on every measure —
+        higher accuracy (73.7% vs 72%), better macro F1 (0.65 vs 0.60), and stronger precision/recall
+        across all four classes. <b>XGBoost</b> was therefore selected as the final model for deployment.
+    </div>
+</section>
+
+    <div class="section-divider">
+        <span class="line"></span>
+        <h1>Milestone 3: Model Deployment</h1>
+        <span class="line"></span>
+    </div>
+
+    <section class="project-header">
+        <h1 style="font-size: 36px">Prediction System Application</h1>
+        <br>
+        <div class="project-overview">
+            After modeling, the model was deployed on a simple 1 page application that forecasts whether the shipment will arrive on time, arrive late, arrive early or be canceled by 
+            giving it order details, customer details, financial details & shipping date. <br><br>
+
+            Feel free to explore the application and test the model's forecasting capabilities! to go to the website, 
+            <a href="https://supply-chain-prediction.streamlit.app/" target="_blank" style="color: #a855f7; font-weight: bold; text-decoration: underline;">Click Here</a><br>
+        </div>
+    </section>
+    <br><br>
+</body>
+</html>
