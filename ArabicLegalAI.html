@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arabic Legal AI Assistant</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="Projects.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
+    <style>
+        /* Small additions scoped to this page only */
+        .tech-pill-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.6rem;
+            margin: 1rem 0 0.5rem;
+        }
+        .tech-pill {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            color: var(--text-primary);
+            padding: 0.4rem 1rem;
+            border-radius: 999px;
+            font-size: 0.9rem;
+        }
+        .role-tag {
+            display: inline-block;
+            background: rgba(168, 85, 247, 0.15);
+            border: 1px solid var(--border);
+            color: var(--accent);
+            padding: 0.25rem 0.8rem;
+            border-radius: 999px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 0.8rem;
+        }
+        .pipeline-flow {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            margin: 1.5rem 0;
+        }
+        .pipeline-step {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 0.9rem 1.2rem;
+            text-align: center;
+            color: var(--text-primary);
+            font-size: 0.95rem;
+            min-width: 150px;
+            box-shadow: 0 2px 10px var(--shadow);
+        }
+        .pipeline-step.mine {
+            border: 1px solid var(--accent);
+            box-shadow: 0 0 14px rgba(168, 85, 247, 0.35);
+        }
+        .pipeline-arrow {
+            color: var(--accent);
+            font-size: 1.4rem;
+            flex-shrink: 0;
+        }
+        .pipeline-legend {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            margin-top: 0.5rem;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            flex-wrap: wrap;
+        }
+        .legend-dot {
+            display: inline-block;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            margin-right: 6px;
+            vertical-align: middle;
+        }
+        .code-filename {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            margin: 1.2rem 0 -0.4rem;
+        }
+        .code-filename::before {
+            content: "📄";
+        }
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+            flex-wrap: wrap;
+        }
+        .btn-github {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            background: var(--accent);
+            color: #fff !important;
+            font-weight: 600;
+            padding: 0.7rem 1.5rem;
+            border-radius: 10px;
+            text-decoration: none !important;
+            transition: background 0.25s ease, transform 0.25s ease;
+        }
+        .btn-github:hover {
+            background: var(--accent-dark);
+            transform: translateY(-2px);
+        }
+        .team-note {
+            border-left: 3px solid var(--accent);
+            background: var(--bg-card);
+            padding: 1rem 1.3rem;
+            border-radius: 8px;
+            color: var(--text-secondary);
+            margin-top: 1.2rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <canvas id="network-bg"></canvas>
+    <script src="Projects.js"></script>
+    <header>
+        <div class="nav-container">
+            <h1 class="logo">Mohammed Yasser</h1>
+            <nav class="nav-links">
+                <a href="index.html">Back to Portfolio</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Project Header -->
+    <section class="project-header">
+        <span class="role-tag">Team Project · Team of 5</span>
+        <h1 class="project-title">Arabic Legal AI Assistant</h1>
+        <p class="project-overview">
+            <b>Project Overview:</b> I collaborated in a team of five to build an Arabic legal document
+            question-answering assistant powered by a Retrieval-Augmented Generation (RAG) architecture.
+            The system lets users upload Arabic contracts and legal documents (PDF, DOCX, or TXT), then ask
+            natural-language legal questions and receive grounded answers backed by the exact clauses and page
+            numbers the answer came from — instead of a generic LLM response that could hallucinate legal detail.
+            <br><br>
+            <b>My Role:</b> I handled document preprocessing and text preparation — including PDF text extraction
+            and section-aware chunking of legal documents — implemented the Arabic text embedding pipeline using
+            <b>BGE-M3</b>, integrated it with <b>FAISS</b> for semantic retrieval of relevant contract sections,
+            and contributed to the retrieval pipeline that supplies relevant contract context to the
+            <b>Google Gemini API</b> for grounded answer generation.
+        </p>
+        <div class="tech-pill-row">
+            <span class="tech-pill">Python</span>
+            <span class="tech-pill">PyMuPDF</span>
+            <span class="tech-pill">BGE-M3 (FlagEmbedding)</span>
+            <span class="tech-pill">FAISS</span>
+            <span class="tech-pill">Google Gemini API</span>
+            <span class="tech-pill">Streamlit</span>
+            <span class="tech-pill">RAG</span>
+        </div>
+        <div class="cta-buttons">
+            <a href="https://github.com/Ahmed-Tarek0/Arabic-Legal-AI-Assistant" target="_blank" class="btn-github">
+                <svg width="20" height="20" viewBox="0 0 16 16" fill="currentColor">
+                    <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38
+                    0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01
+                    1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95
+                    0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68
+                    0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15
+                    0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01
+                    8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"/>
+                </svg>
+                View on GitHub
+            </a>
+        </div>
+    </section>
+
+    <div class="section-divider">
+        <span class="line"></span>
+        <h1>System Overview & RAG Pipeline</h1>
+        <span class="line"></span>
+    </div>
+
+    <section class="project-header">
+        <h1 style="font-size: 36px">What the System Does</h1>
+        <br>
+        <div class="project-overview">
+            Reading and interpreting legal contracts is slow and error-prone, especially in Arabic where legal
+            phrasing is dense and formally structured. Our assistant lets a user upload a contract and ask
+            questions in plain Arabic — such as the termination conditions or penalty clauses — and get an answer
+            grounded in the actual document, with the supporting clause and page number cited alongside a
+            similarity score, rather than a free-form guess from the model.
+            <br><br>
+            To keep answers trustworthy, the system never lets the language model answer from memory alone.
+            Every question is first routed through a semantic search step over the uploaded document, and only the
+            most relevant chunks of real contract text are passed to the LLM as context before it is allowed to
+            respond.
+        </div>
+    </section>
+
+    <section class="project-header">
+        <h1 style="font-size: 36px">RAG Pipeline</h1>
+        <br>
+        <div class="project-overview">
+            Below is the end-to-end flow of the system. The highlighted steps are the parts of the pipeline I was
+            directly responsible for:
+        </div>
+
+        <div class="pipeline-flow">
+            <div class="pipeline-step mine">Contract Upload<br><small>(PDF / DOCX / TXT)</small></div>
+            <span class="pipeline-arrow">&#8594;</span>
+            <div class="pipeline-step mine">PDF Text Extraction<br><small>PyMuPDF</small></div>
+            <span class="pipeline-arrow">&#8594;</span>
+            <div class="pipeline-step mine">Section-Aware Chunking<br><small>article/clause boundaries</small></div>
+        </div>
+        <div class="pipeline-flow">
+            <div class="pipeline-step mine">BGE-M3 Embeddings</div>
+            <span class="pipeline-arrow">&#8594;</span>
+            <div class="pipeline-step mine">FAISS Vector Index<br><small>semantic retrieval</small></div>
+            <span class="pipeline-arrow">&#8594;</span>
+            <div class="pipeline-step">User Legal Query</div>
+        </div>
+        <div class="pipeline-flow">
+            <div class="pipeline-step mine">Top-K Retrieval<br><small>relevant contract chunks</small></div>
+            <span class="pipeline-arrow">&#8594;</span>
+            <div class="pipeline-step">Context Augmentation<br><small>legal prompt building</small></div>
+            <span class="pipeline-arrow">&#8594;</span>
+            <div class="pipeline-step">Gemini Generation<br><small>grounded answer</small></div>
+        </div>
+        <div class="pipeline-legend">
+            <span><span class="legend-dot" style="background: var(--accent);"></span>Parts I built or directly contributed to</span>
+            <span><span class="legend-dot" style="background: var(--text-secondary);"></span>Built by teammates</span>
+        </div>
+    </section>
+
+    <div class="section-divider">
+        <span class="line"></span>
+        <h1>My Contribution: Document Preprocessing</h1>
+        <span class="line"></span>
+    </div>
+
+    <section class="project-header">
+        <h1 style="font-size: 36px">1. PDF Text Extraction</h1>
+        <br>
+        <div class="project-overview">
+            Arabic legal PDFs are right-to-left, and PyMuPDF's raw block order doesn't always follow natural
+            reading order. I extracted text block-by-block per page and re-sorted the blocks top-to-bottom,
+            right-to-left, then applied light Unicode normalization to clean up PDF artifacts (soft hyphens,
+            zero-width characters) — while deliberately leaving Arabic diacritics and letter-form variants intact,
+            since legal wording needs to stay precise at extraction time. Pages with little to no extractable text
+            (likely scanned images) are flagged rather than silently dropped, so they can be routed to OCR later.
+        </div>
+
+        <div class="code-filename">pdf_extractor.py</div>
+        <div class="jupyter-cell">
+            <div class="cell-input">
+                <div class="code-area">
+                    <pre><code class="language-python">def _extract_page_text(page: "fitz.Page") -> str:
+    """Extract a single page's text using block-sorted ordering."""
+    blocks = page.get_text("blocks")  # (x0, y0, x1, y1, text, block_no, block_type)
+    if not blocks:
+        return ""
+
+    # Sort blocks by vertical position first (reading top -> bottom),
+    # then by horizontal position reversed (right -> left) for RTL layout.
+    blocks = sorted(blocks, key=lambda b: (round(b[1], 1), -b[0]))
+
+    parts = [b[4] for b in blocks if b[4] and b[4].strip()]
+    return "\n".join(parts)
+
+
+def extract_pdf_text(pdf_path: str | Path) -> list[PageText]:
+    """Extract text from every page of a PDF, already normalized.
+    Empty/near-empty pages (e.g. scanned images with no text layer) are
+    still returned so callers can detect and flag them for OCR."""
+    pages: list[PageText] = []
+    with fitz.open(pdf_path) as doc:
+        for i, page in enumerate(doc, start=1):
+            raw = _extract_page_text(page)
+            clean = _normalize_arabic(raw)
+            pages.append(PageText(page_number=i, text=clean))
+    return pages</code></pre>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="project-header">
+        <h1 style="font-size: 36px">2. Section-Aware Chunking</h1>
+        <br>
+        <div class="project-overview">
+            Naively splitting a legal document every N words risks cutting a clause in half, which would give the
+            retriever a chunk that's missing exactly the sentence a question is asking about. I built a
+            sentence-safe chunker that first splits text on Arabic legal section markers
+            (<span dir="rtl">المادة</span> / <span dir="rtl">الفصل</span> / <span dir="rtl">الباب</span> / <span dir="rtl">البند</span>
+            — "Article" / "Chapter" / "Section" / "Clause"), then packs sentences into ~220-word windows with a
+            sliding overlap between consecutive chunks, so context isn't lost at chunk boundaries. Every chunk
+            keeps track of which source page(s) it came from, so answers can later cite exact page numbers.
+        </div>
+
+        <div class="code-filename">text_chunker.py</div>
+        <div class="jupyter-cell">
+            <div class="cell-input">
+                <div class="code-area">
+                    <pre><code class="language-python"># Legal documents are often structured in numbered articles (المادة 1 / الفصل 2).
+# We try to keep article boundaries as strong split hints when present.
+_ARTICLE_HINT_RE = re.compile(r"(?=(?:المادة|الفصل|الباب|البند)\s*[\d٠-٩]+)")
+
+def chunk_document(
+    pages: list[PageText],
+    doc_id: str,
+    chunk_size_words: int = CHUNK_SIZE_WORDS,
+    overlap_words: int = CHUNK_OVERLAP_WORDS,
+    min_chunk_words: int = MIN_CHUNK_WORDS,
+) -> list[Chunk]:
+    """Build overlapping, sentence-safe chunks across an entire document.
+    Sentences are packed into ~chunk_size_words windows, sliding back by
+    overlap_words so context isn't lost at chunk boundaries."""
+    tagged_sentences: list[tuple[str, int]] = []
+    for page in pages:
+        for sent in _split_sentences(page.text):
+            tagged_sentences.append((sent, page.page_number))
+
+    chunks: list[Chunk] = []
+    current_words: list[str] = []
+    current_pages: set[int] = set()
+    # ... pack sentences into windows, flushing a Chunk() once the
+    # word budget is hit, then retaining the last `overlap_words`
+    # words to seed the next window.
+    return chunks</code></pre>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-divider">
+        <span class="line"></span>
+        <h1>My Contribution: Embeddings & Semantic Retrieval</h1>
+        <span class="line"></span>
+    </div>
+
+    <section class="project-header">
+        <h1 style="font-size: 36px">3. Arabic Embeddings with BGE-M3</h1>
+        <br>
+        <div class="project-overview">
+            For turning contract chunks into vectors, I used <b>BAAI/bge-m3</b>, a multilingual embedding model
+            with strong native Arabic support. Every chunk (and every query) is encoded into a 1024-dimension
+            dense vector, which I L2-normalize so that FAISS's inner-product search behaves as cosine similarity —
+            keeping the retrieval math simple and fast without sacrificing accuracy.
+        </div>
+
+        <div class="code-filename">embedder.py</div>
+        <div class="jupyter-cell">
+            <div class="cell-input">
+                <div class="code-area">
+                    <pre><code class="language-python">def embed_texts(texts: list[str], batch_size: int = EMBED_BATCH_SIZE) -> np.ndarray:
+    """Embed a list of texts (chunks or a single query) into dense vectors.
+    Returns an (N, EMBED_DIM) float32 array, L2-normalized so that inner
+    product search in FAISS is equivalent to cosine similarity."""
+    model = get_embedder()  # lazily-loaded BGE-M3 singleton
+    output = model.encode(
+        texts,
+        batch_size=batch_size,
+        max_length=EMBED_MAX_LENGTH,
+        return_dense=True,
+        return_sparse=False,
+        return_colbert_vecs=False,
+    )
+    dense = np.asarray(output["dense_vecs"], dtype="float32")
+
+    # normalize to unit length for cosine-via-inner-product search
+    norms = np.linalg.norm(dense, axis=1, keepdims=True)
+    norms[norms == 0] = 1e-12
+    dense = dense / norms
+    return dense</code></pre>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="project-header">
+        <h1 style="font-size: 36px">4. Semantic Retrieval with FAISS</h1>
+        <br>
+        <div class="project-overview">
+            I integrated the BGE-M3 embeddings with a FAISS index to power semantic retrieval of the most relevant
+            contract sections for a given question. The retriever validates that the FAISS index and the row-aligned
+            chunk metadata are in sync before ever answering a query, embeds the incoming question the same way the
+            chunks were embedded, and returns the top-K most similar chunks along with their similarity score, chunk
+            ID, and source page numbers — the pieces of evidence that get displayed alongside the final answer.
+        </div>
+
+        <div class="code-filename">retriever.py</div>
+        <div class="jupyter-cell">
+            <div class="cell-input">
+                <div class="code-area">
+                    <pre><code class="language-python">def retrieve(self, query: str, top_k: int = TOP_K) -> list[dict]:
+    """Retrieve the most relevant legal chunks for a query."""
+    k = min(top_k, self.index.ntotal)
+
+    # BGE-M3 returns a normalized vector with shape (1, 1024).
+    query_embedding = embed_query(query)
+
+    # Because both document and query embeddings are L2-normalized,
+    # IndexFlatIP gives cosine similarity.
+    scores, indices = self.index.search(query_embedding, k)
+
+    results: list[dict] = []
+    for rank, (score, index_id) in enumerate(zip(scores[0], indices[0]), start=1):
+        if index_id < 0:  # FAISS returns -1 when no valid result exists
+            continue
+        record = dict(self.metadata[index_id])
+        results.append({"rank": rank, "score": float(score), **record})
+
+    return results</code></pre>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-divider">
+        <span class="line"></span>
+        <h1>Grounded Answer Generation</h1>
+        <span class="line"></span>
+    </div>
+
+    <section class="project-header">
+        <h1 style="font-size: 36px">Feeding Retrieved Context to Gemini</h1>
+        <br>
+        <div class="project-overview">
+            Once the top-K relevant chunks come back from the retriever, I contributed to the pipeline that
+            structures them into a grounded legal prompt for the <b>Google Gemini API</b> — the retrieved contract
+            text is injected as evidence the model must base its answer on, rather than letting it answer from
+            general knowledge. This keeps the assistant's answers traceable back to the actual clause and page they
+            came from, which matters a lot for legal use cases where a plausible-sounding but wrong answer is worse
+            than no answer.
+            <br><br>
+            The final assistant also supports a "Full Contract Risk Audit" mode that automatically pulls out
+            contract parties, financial obligations, penalty clauses, and liability limitations in one pass, and
+            ships with an interactive Arabic (RTL) Streamlit interface for uploading contracts and chatting with
+            them.
+        </div>
+        <div class="team-note">
+            <b>Team & Scope Note:</b> This was a 5-person team project. My focus was the document preprocessing
+            stage (PDF extraction and section-aware chunking) and the embedding/retrieval layer (BGE-M3 + FAISS),
+            plus contributing to how retrieved context is passed to Gemini for generation. Prompt engineering, the
+            Streamlit UI, multi-backend LLM fallback (OpenAI/Groq/local Qwen), and evaluation tooling were built
+            collaboratively with my teammates.
+        </div>
+        <div class="cta-buttons">
+            <a href="https://github.com/Ahmed-Tarek0/Arabic-Legal-AI-Assistant" target="_blank" class="btn-github">
+                <svg width="20" height="20" viewBox="0 0 16 16" fill="currentColor">
+                    <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38
+                    0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01
+                    1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95
+                    0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68
+                    0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15
+                    0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01
+                    8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"/>
+                </svg>
+                View Full Source on GitHub
+            </a>
+        </div>
+    </section>
+    <br><br>
+
+</body>
+</html>
