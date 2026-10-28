@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SwiftRead | Multi-Format Document Q&A Chatbot</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="Projects.css">
+    <link rel="stylesheet" href="portfolio.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
+</head>
+<body>
+    <!-- Background Canvas -->
+    <canvas id="network-bg"></canvas>
+    <script src="Projects.js"></script>
+
+    <!-- Navigation Header -->
+    <header>
+        <div class="nav-container">
+            <h1 class="logo">Mohammed Yasser</h1>
+            <nav class="nav-links">
+                <a href="index.html">Back to Portfolio</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Project Header -->
+    <section class="project-header">
+        <span class="skill-tag">Solo Project · End-to-End Hybrid RAG</span>
+        <h1 class="project-title">SwiftRead: Multi-Format Document Q&A Chatbot</h1>
+        
+        <div class="project-overview">
+            <p>
+                <b>Project Overview:</b> SwiftRead is a high-performance, constrained AI assistant engineered to extract facts from uploaded multi-format documents (.PDF, .DOCX, .TXT) and answer questions strictly based on their content. Built upon a hybrid Retrieval-Augmented Generation (RAG) architecture, the system combines local document processing and vector storage with cloud-based LLM inference to generate accurate answers and document summaries while eliminating ungrounded hallucinations.
+            </p>
+            <p>
+                <b>System Architecture:</b> Designed and deployed an end-to-end pipeline featuring sentence-aware document chunking, dense vector indexing via <b>ChromaDB</b> with <b>BAAI/bge-large-en-v1.5</b> embeddings, and cloud inference through the <b>OpenAI / Hugging Face Router API</b> running <b>openai/gpt-oss-20b</b>. Evaluated and systematically benchmarked across 41 multi-document test suites to achieve optimal retrieval recall and generation faithfulness.
+            </p>
+        </div>
+
+        <div class="skill-tags">
+            <span class="skill-tag">Python</span>
+            <span class="skill-tag">FastAPI</span>
+            <span class="skill-tag">ChromaDB</span>
+            <span class="skill-tag">PyTorch</span>
+            <span class="skill-tag">BAAI/bge-large-en-v1.5</span>
+            <span class="skill-tag">OpenAI API</span>
+            <span class="skill-tag">openai/gpt-oss-20b</span>
+            <span class="skill-tag">Scikit-Learn</span>
+            <span class="skill-tag">Sentence Chunking</span>
+            <span class="skill-tag">Hybrid RAG</span>
+        </div>
+
+        <!-- Single GitHub Button at the Top -->
+        <div class="cv-container">
+            <a href="https://github.com/Mohammeddddd5/Multi-Format-Document-Q-A-Chatbot" target="_blank" class="cv-btn">
+                View Project on GitHub
+            </a>
+        </div>
+    </section>
+
+    <!-- Section 1: Model Performance -->
+    <div class="section-divider">
+        <span class="line"></span>
+        <h1>Model Performance & Benchmarking</h1>
+        <span class="line"></span>
+    </div>
+
+    <section class="project-header">
+        <h1>Empirical Pipeline Optimization</h1>
+        <br>
+        <div class="project-overview">
+            <p>
+                To ensure high precision and factual reliability, SwiftRead was subjected to an automated evaluation harness across <b>41 diverse benchmark queries</b> spanning technical lecture slides, machine learning documentation, and GIS assignment PDFs. Each generated output was benchmarked against ground-truth human answers using semantic embedding cosine similarity and keyword recall metrics.
+            </p>
+        </div>
+
+        <!-- Performance Metrics Grid -->
+        <div class="about-cards">
+            <div class="about-card">
+                <div class="about-card-icon">🎯</div>
+                <div class="about-card-label">Semantic Match</div>
+                <div class="about-card-value">
+                    81.9%
+                    <small>Answer alignment to ground-truth</small>
+                </div>
+            </div>
+
+            <div class="about-card">
+                <div class="about-card-icon">🔍</div>
+                <div class="about-card-label">Keyword Recall</div>
+                <div class="about-card-value">
+                    75.3%
+                    <small>Factual context retrieval coverage</small>
+                </div>
+            </div>
+
+            <div class="about-card">
+                <div class="about-card-icon">⚡</div>
+                <div class="about-card-label">Answer Relevance</div>
+                <div class="about-card-value">
+                    66.6%
+                    <small>Direct query-to-answer similarity</small>
+                </div>
+            </div>
+
+            <div class="about-card">
+                <div class="about-card-icon">🛡️</div>
+                <div class="about-card-label">Faithfulness</div>
+                <div class="about-card-value">
+                    63.0%
+                    <small>Strict adherence to retrieved context</small>
+                </div>
+            </div>
+        </div>
+
+        <br>
+        <div class="project-overview">
+            <p><b>Hyperparameter Tuning: Context Retrieval Window (top_k)</b></p>
+            <p>
+                Systematic benchmarking revealed a direct trade-off between raw keyword recall and generation faithfulness. Lowering <code>top_k</code> from 5 to 3 removed lower-confidence context chunks, filtering out distraction noise and driving <b>Answer Semantic Match up to 81.9%</b> and <b>Faithfulness to 63.0%</b>.
+            </p>
+            <ul class="project-overview-list">
+                <li><b>top_k = 5:</b> 65.1% Retrieval | 79.7% Recall | 78.1% Semantic Match | 58.3% Faithfulness</li>
+                <li><b>top_k = 4:</b> 65.1% Retrieval | 76.3% Recall | 78.7% Semantic Match | 61.7% Faithfulness</li>
+                <li><b>top_k = 3 (Optimal):</b> 64.9% Retrieval | 75.3% Recall | <b>81.9% Semantic Match</b> | <b>63.0% Faithfulness</b></li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Section 2: Technical Design & Rationale -->
+    <div class="section-divider">
+        <span class="line"></span>
+        <h1>Architectural Decisions & Design Rationale</h1>
+        <span class="line"></span>
+    </div>
+
+    <section class="project-header">
+        <h1>Engineering Choices & Technical Trade-offs</h1>
+        <br>
+        <div class="project-overview">
+            <p><b>1. Multi-Format Ingestion & Sentence-Aware Chunking Strategy</b></p>
+            <p>
+                Document preprocessing directly dictates retrieval quality. Naive character-count splitting often chops sentences mid-clause, destroying semantic meaning.
+            </p>
+            <ul class="project-overview-list">
+                <li><b>Multi-Format Extracted Text:</b> Built specialized loaders for PDF, DOCX, and TXT files, extracting raw text cleanly while maintaining page-level structure.</li>
+                <li><b>Sentence-Boundary Chunking:</b> Implemented a sentence-aware text splitter that respects grammatical boundaries, packing full sentences into ~500–600 character windows.</li>
+                <li><b>Sliding Window Overlap:</b> Applied an 80–100 character sliding overlap between adjacent chunks to guarantee key facts spanning sentence transitions are never lost across chunk boundaries.</li>
+                <li><b>Rich Metadata Injection:</b> Every chunk is tagged with <code>doc_id</code>, <code>filename</code>, <code>doc_pages</code>, <code>chunk_id</code>, and <code>session_id</code>, enabling accurate source citations during generation.</li>
+            </ul>
+
+            <br>
+            <p><b>2. Why Local Embeddings with BAAI/bge-large-en-v1.5?</b></p>
+            <p>
+                Rather than relying on paid cloud embedding APIs, I selected <code>BAAI/bge-large-en-v1.5</code> running locally on CPU:
+            </p>
+            <ul class="project-overview-list">
+                <li><b>Zero API Overhead:</b> Document ingestion and chunk vectorization occur locally on standard CPU hardware without network latency or per-token API costs.</li>
+                <li><b>Top-Tier Retrieval Accuracy:</b> Ranked among the top dense retrieval models on MTEB, generating 1024-dimensional L2-normalized vectors that deliver high cosine semantic matching for technical English text.</li>
+                <li><b>Data Privacy:</b> Raw document chunks are embedded locally on disk before any LLM generation calls occur.</li>
+            </ul>
+
+            <br>
+            <p><b>3. Why ChromaDB for Vector Storage?</b></p>
+            <p>
+                I selected <b>ChromaDB</b> as the vector database layer due to its lightweight, embedded architecture and metadata filtering capabilities:
+            </p>
+            <ul class="project-overview-list">
+                <li><b>Embedded Persistence:</b> Runs embedded directly within Python with local disk persistence (<code>chroma_db/</code>), requiring zero external database server setup.</li>
+                <li><b>Session-Isolated Querying:</b> Leverages metadata filtering on <code>session_id</code> during retrieval, guaranteeing users only query documents uploaded in their active chat session.</li>
+                <li><b>Instant Document Cleanup:</b> Individual documents or complete user sessions can be deleted from the vector index in milliseconds via metadata queries without re-indexing the entire database.</li>
+            </ul>
+
+            <br>
+            <p><b>4. LLM Selection Journey: SmolLM2 vs. Qwen 27B vs. GPT-20B</b></p>
+            <p>
+                Selecting the optimal generation model involved evaluating multiple model scales to achieve strict refusal adherence when information was missing:
+            </p>
+            <ul class="project-overview-list">
+                <li><b>SmolLM2-360M-Instruct (Local CPU):</b> Initially tested to achieve a 100% local CPU pipeline. While extremely fast, the 360M parameter model lacked the capacity for complex document reasoning, frequently ignored prompt constraints, and suffered from text repetition loops.</li>
+                <li><b>Qwen 27B / Qwen3.8-27b (Cloud Router):</b> Evaluated as a high-capacity alternative. While offering strong reasoning capabilities, its generation latency and adherence to strict refusal strings varied across benchmark edge cases.</li>
+                <li><b>openai/gpt-oss-20b (Selected Production Model):</b> Settled on `openai/gpt-oss-20b` routed via Hugging Face's OpenAI-compatible router interface. It demonstrated flawless instruction-following, adhering strictly to system prompts (replying with exact refusal strings when facts were absent) and yielding the highest benchmark scores (**81.9% Semantic Match** and **63.0% Faithfulness**).</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Section 3: Core Implementation Code -->
+    <div class="section-divider">
+        <span class="line"></span>
+        <h1>Core Implementation & Evaluation Code</h1>
+        <span class="line"></span>
+    </div>
+
+    <section class="project-header">
+        <h1>1. Ingestion & Sentence-Aware Chunking</h1>
+        <div class="project-overview">
+            <p>Document ingestion pipeline extracting text and producing sentence-safe overlapping chunks enriched with metadata.</p>
+        </div>
+
+        <div class="code-filename">src/chunking.py</div>
+        <div class="jupyter-cell">
+            <div class="cell-input">
+                <div class="prompt">In [1]:</div>
+                <div class="code-area">
+                    <pre><code class="language-python">import re
+
+def create_sentence_chunks(text: str, chunk_size: int = 500, overlap: int = 90) -> list:
+    """Split document text into sentence-safe overlapping chunks."""
+    # Split text into sentences using standard regex
+    sentences = re.split(r'(?<=[.!?]) +', text.strip())
+    chunks = []
+    current_chunk = []
+    current_length = 0
+
+    for sentence in sentences:
+        sentence_len = len(sentence)
+        if current_length + sentence_len > chunk_size and current_chunk:
+            chunk_text = " ".join(current_chunk)
+            chunks.append(chunk_text)
+            
+            # Retain trailing sentences for overlap window
+            overlap_sentences = []
+            overlap_len = 0
+            for s in reversed(current_chunk):
+                if overlap_len + len(s) <= overlap:
+                    overlap_sentences.insert(0, s)
+                    overlap_len += len(s)
+                else:
+                    break
+            current_chunk = overlap_sentences
+            current_length = overlap_len
+
+        current_chunk.append(sentence)
+        current_length += sentence_len
+
+    if current_chunk:
+        chunks.append(" ".join(current_chunk))
+
+    return chunks</code></pre>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="project-header">
+        <h1>2. Hybrid RAG Pipeline & LLM Router</h1>
+        <div class="project-overview">
+            <p>Main pipeline connecting local ChromaDB vector retrieval with cloud LLM generation via the OpenAI SDK router interface.</p>
+        </div>
+
+        <div class="code-filename">src/rag_pipeline.py</div>
+        <div class="jupyter-cell">
+            <div class="cell-input">
+                <div class="prompt">In [2]:</div>
+                <div class="code-area">
+                    <pre><code class="language-python">import os
+from pathlib import Path
+import chromadb
+from openai import OpenAI
+from src.embeddings import EmbeddingModel
+
+class RAGPipeline:
+    """End-to-end Hybrid RAG Pipeline: Local VectorDB + Cloud LLM Router."""
+
+    def __init__(self, top_k=3, embedder=None):
+        self.top_k = top_k
+        self.embedder = embedder or EmbeddingModel(device="cpu")
+        
+        # Connect to persistent local ChromaDB
+        self.client = chromadb.PersistentClient(path=str(CHROMA_PATH))
+        self.collection = self.client.get_or_create_collection(name="document_chunks_real")
+
+        # Initialize OpenAI Client with custom HF Router URL
+        self.llm_client = OpenAI(
+            base_url="https://router.huggingface.co/v1",
+            api_key=os.getenv("HF_TOKEN")
+        )
+        self.model_name = "openai/gpt-oss-20b"
+
+    def answer_query(self, query: str, session_id: str) -> dict:
+        """Retrieve top-k chunks and generate grounded answer."""
+        chunks = self.retrieve(query, session_id)
+        if not chunks:
+            return {
+                "answer": "I can only answer questions based on the uploaded documents.",
+                "sources": []
+            }
+
+        context_text = "\n\n---\n\n".join([chunk["text"] for chunk in chunks])
+
+        messages = [
+            {
+                "role": "system",
+                "content": (
+                    "You are SwiftRead, a strict document assistant. "
+                    "Answer using ONLY the provided Context. "
+                    "If the answer is NOT explicitly in Context, reply exactly: "
+                    "'I can only answer questions based on the uploaded documents.' "
+                    "Be concise in 1-2 direct sentences."
+                ),
+            },
+            {"role": "user", "content": f"Context:\n{context_text}\n\nQuestion: {query}"}
+        ]
+
+        completion = self.llm_client.chat.completions.create(
+            model=self.model_name,
+            messages=messages,
+            max_tokens=250,
+            temperature=0.1
+        )
+        
+        return {
+            "answer": completion.choices[0].message.content.strip(),
+            "sources": [chunk["metadata"] for chunk in chunks]
+        }</code></pre>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="project-header">
+        <h1>3. Quantitative Evaluation Suite</h1>
+        <div class="project-overview">
+            <p>Automated evaluation suite computing semantic similarity, keyword recall, and faithfulness across ground-truth datasets.</p>
+        </div>
+
+        <div class="code-filename">evaluate_all_rags.py</div>
+        <div class="jupyter-cell">
+            <div class="cell-input">
+                <div class="prompt">In [3]:</div>
+                <div class="code-area">
+                    <pre><code class="language-python">def calculate_similarity(embedder, text1, text2):
+    """Cosine similarity between two texts using local embeddings."""
+    if not text1 or not text2:
+        return 0.0
+    emb1 = np.array(embedder.embed_query(str(text1))).reshape(1, -1)
+    emb2 = np.array(embedder.embed_query(str(text2))).reshape(1, -1)
+    return float(cosine_similarity(emb1, emb2)[0][0])
+
+def evaluate_pipeline():
+    rag = RAGPipeline(top_k=3)
+    embedder = rag.embedder
+    totals = {"match": 0.0, "faith": 0.0, "relevance": 0.0}
+    total_questions = 0
+
+    for title, (doc_path, csv_path) in suites.items():
+        session_id = f"eval-{uuid.uuid4().hex[:8]}"
+        ingestor.ingest_file(doc_path, session_id)
+        df = pd.read_csv(csv_path)
+
+        for _, row in df.iterrows():
+            question = row["Question"]
+            ground_truth = str(row["Ground_Truth_Answer"])
+            
+            chunks = rag.retrieve(question, session_id)
+            answer = rag.answer_query(question, session_id)["answer"]
+            context_str = " ".join(c["text"] for c in chunks)
+
+            # Record similarity metrics
+            totals["match"] += calculate_similarity(embedder, answer, ground_truth)
+            totals["faith"] += calculate_similarity(embedder, answer, context_str)
+            totals["relevance"] += calculate_similarity(embedder, answer, question)
+            total_questions += 1
+
+        rag.collection.delete(where={"session_id": session_id})
+
+    print(f"Final Answer Semantic Match: {totals['match'] / total_questions * 100:.1f}%")</code></pre>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</body>
+</html>
